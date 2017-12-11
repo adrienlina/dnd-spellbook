@@ -1,3 +1,11 @@
 -r base.txt
 django-debug-toolbar>=1.8
 Werkzeug>=0.12.2
+flake8
+flake8-bugbear
+flake8-print
+flake8-commas
+flake8-tuple
+flake8-builtins
+flake8-isort
+pep8-naming
