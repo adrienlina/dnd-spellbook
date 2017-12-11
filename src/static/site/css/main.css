@@ -4,6 +4,10 @@ html, body{
     height:100%;		/* For full height images */
 }
 
+.content {
+  margin-top: 60px;
+}
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;
