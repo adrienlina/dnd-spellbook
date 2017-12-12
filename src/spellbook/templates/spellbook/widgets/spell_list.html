@@ -1,6 +1,10 @@
 {% comment %}
   Required variables:
   - spells (the list of Spell objects to display)
+  Possible variables:
+  - action_url
+  - action_param
+  - action_logo
 {% endcomment %}
 
 <table class="table table-striped">
@@ -11,6 +15,9 @@
       <th>Cast type</th>
       <th>Range</th>
       <th>Description</th>
+      {% if action_url %}
+        <th></th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -21,6 +28,15 @@
       <td>{{ spell.cast_type }}</td>
       <td>{{ spell.spell_range }}</td>
       <td>{{ spell.description }}</td>
+      {% if action_url %}
+        <td>
+          <form method="POST" action="{% url action_url action_param %}">
+            {% csrf_token %}
+            <input type="hidden" name="spell_pk" value={{spell.pk}} />
+            <button type="submit" class="btn btn-info">{{ action_logo }}</button>
+          </form>
+        </td>
+      {% endif %}
     </tr>
     {% endfor %}
   </tbody>

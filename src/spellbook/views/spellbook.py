@@ -5,8 +5,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from profiles.models import get_request_profile
-from spellbook.forms import SpellbookForm
-from spellbook.models import Spell, Spellbook
+from spellbook.forms import AddSpellToSpellbookForm, SpellbookForm
+from spellbook.models import Spell, Spellbook, SpellUsage
 
 
 class SpellbookListView(ListView):
@@ -24,6 +24,14 @@ class SpellbookListView(ListView):
 def get_spellbook_details(request, pk):
     """Show the details of a given spellbook"""
     spellbook = get_object_or_404(Spellbook, pk=pk)
+
+    if request.method == 'POST':
+        form = AddSpellToSpellbookForm(request.POST)
+        if form.is_valid():
+            spell = form.cleaned_data['spell']
+            spell_usage = SpellUsage(spell=spell, spellbook=spellbook)
+            spell_usage.save()
+
     spells = Spell.objects.all()
 
     context = {

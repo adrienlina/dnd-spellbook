@@ -18,7 +18,7 @@
       <div class="well">
         <h3>List of all spells</h3>
         <div>
-          {% include "spellbook/widgets/spell_list.html" with spells=spells %}
+          {% include "spellbook/widgets/spell_list.html" with spells=spells action_url='spellbook:spellbook-detail' action_param=spellbook.pk action_logo="+" %}
         </div>
       </div>
     </div>
