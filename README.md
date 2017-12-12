@@ -2,11 +2,11 @@
 
 DnD Spellbook is a web app that aims to simplify tracking of known spells and prepared spells for a DnD character.
 
-It is built with [Python][0] using the [Django Web Framework][1], and the [arocks/edge](https://github.com/arocks/edge) boilerplate.
+It is built using the [Django Web Framework](https://www.djangoproject.com/) and the [arocks/edge](https://github.com/arocks/edge) boilerplate.
 
 This project has the following basic apps:
 
-* TBC
+* `spellbook`: containing the spells and user spellbooks
 
 ## Installation
 
@@ -25,3 +25,18 @@ Install all dependencies:
 Run migrations:
 
     python manage.py migrate
+
+## A Note on the License
+
+While the code produced here is MIT licensed, the D&D content is IP of Wizards.
+
+WIZARDS OF THE COAST, DUNGEONS &amp; DRAGONS, AND THEIR LOGOS ARE TRADEMARKS
+OF WIZARDS OF THE COAST LLC IN THE UNITED STATES AND OTHER COUNTRIES.
+© 2016 WIZARDS. ALL RIGHTS RESERVED. THIS WEBSITE IS NOT AFFILIATED
+WITH, ENDORSED, SPONSORED, OR SPECIFICALLY APPROVED BY WIZARDS OF THE
+COAST LLC. THIS WEBSITE MAY USE THE TRADEMARKS AND OTHER INTELLECTUAL
+PROPERTY OF WIZARDS OF THE COAST LLC, WHICH IS PERMITTED UNDER WIZARDS'
+FAN SITE POLICY. FOR EXAMPLE, DUNGEONS &amp; DRAGONS® IS A TRADEMARK[S] OF
+WIZARDS OF THE COAST. FOR MORE INFORMATION ABOUT WIZARDS OF THE COAST OR
+ANY OF WIZARDS' TRADEMARKS OR OTHER INTELLECTUAL PROPERTY, PLEASE VISIT
+THEIR WEBSITE AT (WWW.WIZARDS.COM).
