@@ -32,7 +32,7 @@
         <td>
           <form method="POST" action="{% url action_url action_param %}">
             {% csrf_token %}
-            <input type="hidden" name="spell_pk" value={{spell.pk}} />
+            <input type="hidden" name="spell_pk" value={{ spell.pk }} />
             <button type="submit" class="btn btn-info">{{ action_logo }}</button>
           </form>
         </td>

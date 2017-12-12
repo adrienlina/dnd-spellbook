@@ -29,8 +29,7 @@ def get_spellbook_details(request, pk):
         form = AddSpellToSpellbookForm(request.POST)
         if form.is_valid():
             spell = form.cleaned_data['spell']
-            spell_usage = SpellUsage(spell=spell, spellbook=spellbook)
-            spell_usage.save()
+            SpellUsage.objects.get_or_create(spell=spell, spellbook=spellbook)
 
     spells = Spell.objects.all()
 

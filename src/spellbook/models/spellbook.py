@@ -32,3 +32,8 @@ class SpellUsage(models.Model):
 
     """Whether the spell is prepared or not"""
     prepared = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = [
+            ('spell', 'spellbook'),
+        ]
