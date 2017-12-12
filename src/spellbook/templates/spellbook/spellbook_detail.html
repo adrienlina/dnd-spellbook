@@ -18,14 +18,14 @@
       <div class="well">
         <h3>List of all spells</h3>
         <div>
-          {% include "spellbook/widgets/spell_list.html" with spells=spells action_url='spellbook:spellbook-detail' action_param=spellbook.pk action_logo="+" %}
+          {% include "spellbook/widgets/spell_list.html" with spells=spells action_url='spellbook:spellbook-add-spell' action_param=spellbook.pk action_logo="+" %}
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="well">
         <h3>Spellbook {{ spellbook.name }}: spells available</h3>
-        {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells.all %}
+        {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells.all action_url='spellbook:spellbook-remove-spell' action_param=spellbook.pk action_logo="-" %}
       </div>
     </div>
   </div>

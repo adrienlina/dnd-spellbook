@@ -10,7 +10,7 @@ User = get_user_model()
 class SpellbookModelCase(TestCase):
 
     @classmethod
-    def setUpTestData(cls):
+    def setUpTestData(cls):  # noqa: N802
         # We need a profile for a spellbook, thus we need a django user
         user = User(email="email@email.com", password="password")
         user.save()
@@ -34,9 +34,8 @@ class SpellbookModelCase(TestCase):
             n_spellbooks + 1,
         )
 
-
     def test_1_add_spell(self):
-        """It should be possible to add a spell to a spellbook"""
+        """It should be possible to add and remove a spell to a spellbook"""
 
         spell = Spell(
             name="spell_name",
@@ -62,4 +61,11 @@ class SpellbookModelCase(TestCase):
         self.assertEqual(
             spellbook.spells.count(),
             1,
+        )
+
+        SpellUsage.objects.filter(spell=spell, spellbook=spellbook).delete()
+
+        self.assertEqual(
+            spellbook.spells.count(),
+            0,
         )
