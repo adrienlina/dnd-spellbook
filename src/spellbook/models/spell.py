@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
 class Spell(models.Model):
     """A unique spell as explained in the D&D Player's Handbook"""
 
