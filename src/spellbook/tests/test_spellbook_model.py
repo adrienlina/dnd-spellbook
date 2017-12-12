@@ -6,6 +6,7 @@ from spellbook.models import Spellbook
 
 User = get_user_model()
 
+
 class SpellbookModelCase(TestCase):
     def test_0_create_spellbook(self):
         """It should be possible to create a spell"""
@@ -28,5 +29,5 @@ class SpellbookModelCase(TestCase):
 
         self.assertEqual(
             Spellbook.objects.count(),
-            n_spellbooks + 1
+            n_spellbooks + 1,
         )

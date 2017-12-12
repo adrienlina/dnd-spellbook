@@ -20,5 +20,5 @@ class SpellModelCase(TestCase):
 
         self.assertEqual(
             Spell.objects.count(),
-            n_spells + 1
+            n_spells + 1,
         )
