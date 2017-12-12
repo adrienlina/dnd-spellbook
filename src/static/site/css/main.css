@@ -18,6 +18,8 @@ html, body{
   padding-bottom: 40px;
   margin-top: 40px;
   border-top: 1px solid #eee;
+  font-size: 0.825em;
+  color: rgb(166, 166, 166);
 }
 
 .alert {
