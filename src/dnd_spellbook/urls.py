@@ -5,6 +5,7 @@ from django.contrib import admin
 
 import accounts.urls
 import profiles.urls
+import spellbook.urls
 
 from . import views
 
@@ -14,6 +15,7 @@ urlpatterns = [
     url(r'^users/', include(profiles.urls, namespace='profiles')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(accounts.urls, namespace='accounts')),
+    url(r'^', include(spellbook.urls, namespace='spellbook')),
 ]
 
 # User-uploaded files like profile pics need to be served in development

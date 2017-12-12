@@ -2,7 +2,7 @@
 <html lang="en">
     {% load staticfiles %}
     {% load thumbnail %}
-    
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +66,7 @@
 			{{ user.get_full_name|truncatechars:20 }}
 			<span class="caret"></span>
 		    </a>
-		    
+
                   <ul class="dropdown-menu" role="menu">
                     <li><a href="{% url 'profiles:show_self' %}">Profile</a></li>
                     <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
@@ -94,18 +94,20 @@
 
     {% block splash %}
     {% endblock splash %}
+
+    <div class="content">
+      {% block container %}
+      <div class="container">
+
+        <div class="starter-template">
+          <h1>New Project</h1>
+          <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        </div>
+
+      </div><!-- /.container -->
+      {% endblock container %}
+    </div>
     
-    {% block container %}
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>New Project</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-
-    </div><!-- /.container -->
-    {% endblock container %}
-
     <!-- Site footer -->
     {% block footer %}
       <!-- Some social button for contact will do -->
@@ -135,5 +137,3 @@
     {% endblock scripts %}
   </body>
 </html>
-
-

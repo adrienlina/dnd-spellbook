@@ -1,6 +1,9 @@
 -r base.txt
 django-debug-toolbar>=1.8
 Werkzeug>=0.12.2
+pyyaml
+
+# Flake 8 and modules
 flake8
 flake8-bugbear
 flake8-print

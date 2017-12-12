@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}About{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="about" %}
+{% endblock %}
+
+{% block container %}
+<h1>Spells</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Spell Name</th>
+      <th>Level</th>
+      <th>Cast type</th>
+      <th>Range</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for spell in object_list %}
+    <tr>
+      <td>{{ spell.name }}</td>
+      <td>{{ spell.level }}</td>
+      <td>{{ spell.cast_type }}</td>
+      <td>{{ spell.spell_range }}</td>
+      <td>{{ spell.description }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock container %}
