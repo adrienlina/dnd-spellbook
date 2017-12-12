@@ -1,15 +1,12 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from profiles.models import get_request_profile
 from spellbook.forms import SpellbookForm
 from spellbook.models import Spell, Spellbook
-
-
-class SpellListView(ListView):
-    model = Spell
 
 
 class SpellbookListView(ListView):
@@ -24,7 +21,21 @@ class SpellbookListView(ListView):
         return Spellbook.objects.filter(profile=profile)
 
 
+def get_spellbook_details(request, pk):
+    """Show the details of a given spellbook"""
+    spellbook = get_object_or_404(Spellbook, pk=pk)
+    spells = Spell.objects.all()
+
+    context = {
+        'spellbook': spellbook,
+        'spells': spells,
+    }
+
+    return render(request, "spellbook/spellbook_detail.html", context)
+
+
 def create_spellbook(request):
+    """Show a form to create a new spellbook"""
     if request.method == 'POST':
         form = SpellbookForm(request.POST)
         if form.is_valid():
