@@ -1,2 +1,2 @@
 from .spell import Spell
-from .spellbook import Spellbook
+from .spellbook import Spellbook, SpellUsage
