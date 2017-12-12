@@ -9,7 +9,7 @@ User = get_user_model()
 
 class SpellbookModelCase(TestCase):
     def test_0_create_spellbook(self):
-        """It should be possible to create a spell"""
+        """It should be possible to create a spellbook"""
 
         # We need a profile for a spellbook, thus we need a django user
         user = User(email="email@email.com", password="password")

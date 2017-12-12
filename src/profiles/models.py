@@ -28,3 +28,8 @@ class BaseProfile(models.Model):
 class Profile(BaseProfile):
     def __str__(self):
         return "{}'s profile". format(self.user)
+
+
+def get_request_profile(request):
+    """Get the user associated to a request"""
+    return Profile.objects.get(user=request.user)
