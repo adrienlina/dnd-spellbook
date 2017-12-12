@@ -33,3 +33,9 @@ class Spell(models.Model):
     description = models.TextField(
         verbose_name="Description",
     )
+
+    def __repr__(self):
+        return "<Spell %s>" % self.name
+
+    def __str__(self):
+        return "Spell %s" % self.name
