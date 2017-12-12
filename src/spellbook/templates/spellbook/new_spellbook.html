@@ -10,8 +10,13 @@
 {% endblock %}
 
 {% block container %}
-<h1>Spells</h1>
+<h1>New spellbook</h1>
 
-{% include "spellbook/widgets/spell_list.html" with spells=object_list %}
-
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form }}
+    </table>
+    <input type="submit" value="Submit" />
+</form>
 {% endblock container %}

@@ -1,0 +1,27 @@
+{% comment %}
+  Required variables:
+  - spells (the list of Spell objects to display)
+{% endcomment %}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Spell Name</th>
+      <th>Level</th>
+      <th>Cast type</th>
+      <th>Range</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for spell in spells %}
+    <tr>
+      <td>{{ spell.name }}</td>
+      <td>{{ spell.level }}</td>
+      <td>{{ spell.cast_type }}</td>
+      <td>{{ spell.spell_range }}</td>
+      <td>{{ spell.description }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

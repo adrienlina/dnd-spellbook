@@ -1,0 +1,19 @@
+{% comment %}
+  Required variables:
+  - spellbooks (the list of Spell objects to display)
+{% endcomment %}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Spellbook Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for spellbook in spellbooks %}
+    <tr>
+      <td>{{ spellbook.name }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
