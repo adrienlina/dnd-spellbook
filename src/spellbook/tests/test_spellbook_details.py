@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
-from django.test import RequestFactory, TestCase
+from django.test import TestCase
 
 from profiles.models import Profile
-from spellbook.models import Spell, Spellbook, SpellUsage
+from spellbook.models import Spell, Spellbook
 
 User = get_user_model()
 
@@ -76,6 +76,7 @@ class SpellbookModelCase(TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(self.spellbook.spells.count(), 2)
 
+        # Remove one of the spells
         remove_url = reverse('spellbook:spellbook-remove-spell', kwargs={'pk': self.spellbook.pk})
         r = self.client.post(remove_url, {'spell_pk': self.spells[0].pk})
         self.assertEqual(r.status_code, 200)

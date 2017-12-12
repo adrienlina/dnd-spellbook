@@ -35,5 +35,5 @@ class SpellUsage(models.Model):
 
     class Meta:
         unique_together = [
-            ('spell', 'spellbook'),
+            ('spell', 'spellbook'),  # A spellbook can only have a spell once
         ]
