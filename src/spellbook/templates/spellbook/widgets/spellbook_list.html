@@ -7,12 +7,14 @@
   <thead>
     <tr>
       <th>Spellbook Name</th>
+      <th># of spells</th>
     </tr>
   </thead>
   <tbody>
     {% for spellbook in spellbooks %}
     <tr>
-      <td>{{ spellbook.name }}</td>
+      <td><a href="{% url 'spellbook:spellbook-detail' pk=spellbook.pk%}">{{ spellbook.name }}</a></td>
+      <td>{{ spellbook.n_spells }}</td>
     </tr>
     {% endfor %}
   </tbody>

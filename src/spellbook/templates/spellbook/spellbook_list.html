@@ -6,12 +6,16 @@
 {% block title %}{{ block.super }}About{% endblock %}
 
 {% block navbar-left %}
-  {% include "_navbar.html" with active_link="about" %}
+  {% include "_navbar.html" with active_link='spellbook_list' %}
 {% endblock %}
 
 {% block container %}
-<h1>Spellbooks</h1>
+<div class="container">
+  <h1>Spellbooks</h1>
 
-{% include "spellbook/widgets/spellbook_list.html" with spellbooks=object_list %}
-
+  {% include "spellbook/widgets/spellbook_list.html" with spellbooks=object_list %}
+  <div class="row">
+    <a href="{% url 'spellbook:spellbook-new' %}" role="button" class="btn btn-info">Create a new spellbook</a>
+  </div>
+</div>
 {% endblock container %}
