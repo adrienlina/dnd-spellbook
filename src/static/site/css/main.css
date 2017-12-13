@@ -192,6 +192,13 @@ body>.navbar-transparent {
 .spell-description {
   font-size: 0.85em;
   color: rgb(100, 100, 100);
+  max-height: 60px;
+  overflow-y: hidden;
+}
+
+.spell-description.show-full {
+  max-height: none;
+  overflow: auto;
 }
 
 .max-height-full {
@@ -202,6 +209,11 @@ body>.navbar-transparent {
   height: 100%;
 }
 
-.overflowing-well {
+.display-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.overflow-y-scroll {
   overflow-y: scroll;
 }

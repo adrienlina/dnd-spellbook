@@ -20,14 +20,18 @@
       {% endif %}
     </tr>
   </thead>
-  <tbody>
+  <tbody class="overflow-y-scroll">
     {% for spell in spells %}
     <tr>
       <td>{{ spell.name }}</td>
       <td>{{ spell.level }}</td>
       <td>{{ spell.cast_type }}</td>
       <td>{{ spell.spell_range }}</td>
-      <td class="spell-description">{{ spell.description |safe }}</td>
+      <td>
+        <div class="spell-description">
+          {{ spell.description |safe }}
+        </div>
+      </td>
       {% if action_url %}
         <td>
           <form method="POST" action="{% url action_url action_param %}">
@@ -41,3 +45,16 @@
     {% endfor %}
   </tbody>
 </table>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  jQuery('.spell-description').unbind().click(function(event) {
+    var elem = jQuery(this);
+    if (elem.hasClass('show-full')) {
+      elem.removeClass('show-full')
+    } else {
+      elem.addClass('show-full')
+    }
+  });
+}, false);
+</script>

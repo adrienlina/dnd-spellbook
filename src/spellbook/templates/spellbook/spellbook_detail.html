@@ -13,17 +13,19 @@
 <div class="col-sm-12 height-full">
   <div class="row height-full">
     <div class="col-md-6 height-full">
-      <div class="well max-height-full overflowing-well">
-        <h3>List of all spells</h3>
-        <div>
+      <div class="well max-height-full display-flex-column" style="background-color: rgb(220, 220, 220)">
+        <h4>List of all spells</h4>
+        <div class="overflow-y-scroll">
           {% include "spellbook/widgets/spell_list.html" with spells=spells action_url='spellbook:spellbook-add-spell' action_param=spellbook.pk action_logo="+" %}
         </div>
       </div>
     </div>
     <div class="col-md-6 height-full">
-      <div class="well max-height-full overflowing-well">
-        <h3>Spellbook {{ spellbook.name }}: spells available</h3>
-        {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells.all action_url='spellbook:spellbook-remove-spell' action_param=spellbook.pk action_logo="-" %}
+      <div class="well max-height-full display-flex-column" style="background-color: rgb(255, 238, 204)">
+        <h4>Spellbook {{ spellbook.name }}: spells available</h4>
+        <div class="overflow-y-scroll">
+          {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells.all action_url='spellbook:spellbook-remove-spell' action_param=spellbook.pk action_logo="-" %}
+        </div>
       </div>
     </div>
   </div>
