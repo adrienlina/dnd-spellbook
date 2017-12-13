@@ -61,23 +61,23 @@ class SpellbookModelCase(TestCase):
         add_url = reverse('spellbook:spellbook-add-spell', kwargs={'pk': self.spellbook.pk})
 
         # Add one spell
-        r = self.client.post(add_url, {'spell_pk': self.spells[0].pk})
+        r = self.client.post(add_url, {'spell_pk': self.spells[0].pk}, follow=True)
         self.assertEqual(r.status_code, 200)
         self.assertEqual(self.spellbook.spells.count(), 1)
 
         # Add another spell
-        r = self.client.post(add_url, {'spell_pk': self.spells[1].pk})
+        r = self.client.post(add_url, {'spell_pk': self.spells[1].pk}, follow=True)
         self.assertEqual(r.status_code, 200)
         self.assertEqual(self.spellbook.spells.count(), 2)
 
         # Try to add the first one again, it should fail because a spellbook
         # can have a spell only once
-        r = self.client.post(add_url, {'spell_pk': self.spells[0].pk})
+        r = self.client.post(add_url, {'spell_pk': self.spells[0].pk}, follow=True)
         self.assertEqual(r.status_code, 200)
         self.assertEqual(self.spellbook.spells.count(), 2)
 
         # Remove one of the spells
         remove_url = reverse('spellbook:spellbook-remove-spell', kwargs={'pk': self.spellbook.pk})
-        r = self.client.post(remove_url, {'spell_pk': self.spells[0].pk})
+        r = self.client.post(remove_url, {'spell_pk': self.spells[0].pk}, follow=True)
         self.assertEqual(r.status_code, 200)
         self.assertEqual(self.spellbook.spells.count(), 1)

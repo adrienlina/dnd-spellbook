@@ -1,6 +1,4 @@
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.list import ListView
 
 from profiles.models import get_request_profile
@@ -59,7 +57,7 @@ def create_spellbook(request):
             spellbook.profile = get_request_profile(request)
             spellbook.save()
 
-            return HttpResponseRedirect(reverse('spellbook:spellbook-home'))
+            return redirect('spellbook:spellbook-detail', spellbook.pk)
     else:
         form = SpellbookForm()
 
@@ -76,4 +74,4 @@ def _handle_spell_usage_form(request, pk, handler):
 
             handler(spellbook=spellbook, spell=spell)
 
-    return get_spellbook_details(request, pk)
+    return redirect('spellbook:spellbook-detail', pk)
