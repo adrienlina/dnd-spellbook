@@ -20,15 +20,32 @@ class Spellbook(models.Model):
     """Spells present in the spellbook"""
     spells = models.ManyToManyField(Spell, through='SpellUsage')
 
+    def has_spell_prepared(self, spell):
+        """Checks if a spell is prepared for that spellbook"""
+        spell_usage = self.spell_usages.get(spell=spell, spellbook=self)
+
+        return spell_usage.prepared
+
+    @property
+    def spells_with_preparations(self):
+        """Constructs a list of spells and adds is_prepared to each one"""
+        spells_with_preparations = []
+
+        for spell in self.spells.all():
+            spell.is_prepared = self.has_spell_prepared(spell)
+            spells_with_preparations.append(spell)
+
+        return spells_with_preparations
+
 
 class SpellUsage(models.Model):
     """Link between a spell and a spellbook that defines if it is prepared"""
 
     """The spell of the connection"""
-    spell = models.ForeignKey(Spell, on_delete=models.CASCADE)
+    spell = models.ForeignKey(Spell, on_delete=models.CASCADE, related_name='spell_usages')
 
     """The spellbook of the connection"""
-    spellbook = models.ForeignKey(Spellbook, on_delete=models.CASCADE)
+    spellbook = models.ForeignKey(Spellbook, on_delete=models.CASCADE, related_name='spell_usages')
 
     """Whether the spell is prepared or not"""
     prepared = models.BooleanField(default=False)
