@@ -20,6 +20,11 @@ class Spellbook(models.Model):
     """Spells present in the spellbook"""
     spells = models.ManyToManyField(Spell, through='SpellUsage')
 
+    @property
+    def n_spells(self):
+        """Returns the number of spells contained in the spellbook"""
+        return self.spells.count()
+
     def has_spell_prepared(self, spell):
         """Checks if a spell is prepared for that spellbook"""
         spell_usage = self.spell_usages.get(spell=spell, spellbook=self)

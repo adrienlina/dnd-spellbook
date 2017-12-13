@@ -3,15 +3,22 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{ block.super }}About{% endblock %}
+{% block title %}{{ block.super }}Spells{% endblock %}
 
 {% block navbar-left %}
-  {% include "_navbar.html" with active_link="about" %}
+  {% include "_navbar.html" with active_link="spell_list" %}
 {% endblock %}
 
 {% block container %}
-<h1>Spells</h1>
+<div class="no-scroll-content">
+  <div class="container height-full">
+    <div class="row">
+      <h1>Spells <a href="{% url 'spellbook:spellbook-list' %}" class="btn btn-info pull-right">Save them in a spellbook!</a></h1>
+    </div>
 
-{% include "spellbook/widgets/spell_list.html" with spells=object_list %}
-
+    <div class="overflow-y-scroll" style="max-height: calc(100% - 70px)">
+      {% include "spellbook/widgets/spell_list.html" with spells=object_list %}
+    </div>
+  </div>
+</div>
 {% endblock container %}

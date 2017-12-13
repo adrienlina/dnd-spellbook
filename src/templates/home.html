@@ -5,6 +5,10 @@
 
 {% block title %}{{ block.super }}Home{% endblock %}
 
+{% block styles %}
+<link href="{% static 'site/css/forcepagescroll.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block navbar-left %}
   {% include "_navbar.html" with active_link="home" %}
 {% endblock %}
@@ -19,16 +23,17 @@
 {% endblock %}
 
 {% block splash %}
-  <div class="jumbotron jumbotron-carousel corporate-jumbo">
+  <div class="jumbotron jumbotron-carousel">
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-sm-8">
           <h1>{% include "_brandname.html" %}</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-	  <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up for Free!</a>
-        </div>
-        <div class="col-md-4 col-sm-4">
-
+          <p>
+            Manage your character spellbooks. Track available spells, known spells
+            and prepared spells for your character. Bonus: it's
+            <a href="https://github.com/adrienlina/dnd-spellbook/">open source</a>.
+          </p>
+	         <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Free sign up!</a>
         </div>
       </div>
     </div>
@@ -42,26 +47,36 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <h2>Spell list [In Progress]</h2>
+      <p>Look up for your spells and look at their stats.</p>
+      <p><a class="btn btn-primary" href="{% url 'spellbook:spell-list' %}" role="button">View details &raquo;</a></p>
     </div>
     <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-      <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
+      <h2>Spellbooks [In Progress]</h2>
+      <p>Create a spellbook, add spells, prepare some.</p>
+      <p><a class="btn btn-primary" href="{% url 'spellbook:spellbook-list' %}" role="button">View details &raquo;</a></p>
     </div>
     <div class="col-lg-4">
-      <h2>Heading</h2>
-      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+      <h2>Character [To Do]</h2>
+      <p>As a DM, determine automatically which spells are available to each player, and level up easily.</p>
       <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>Wanna help?</h2>
+      <p>There's lots of work to be done, join us on GitHub!</p>
+      <p><a class="btn btn-primary" href="https://github.com/adrienlina/dnd-spellbook/" role="button">GitHub repo &raquo;</a></p>
+    </div>
+    <div class="col-lg-4">
+      <h2>Who are we?</h2>
+      <p>Just a bunch of D&amp;D addicts really... Check us out.</p>
+      <p><a class="btn btn-primary" href="{% url 'about' %}" role="button">The team &raquo;</a></p>
+    </div>
+  </div>
 </div>
-
 {% endblock container %}
 
 {% block scripts %}
 <script src="{% static 'site/js/site.js' %}"></script>
 {% endblock scripts %}
-

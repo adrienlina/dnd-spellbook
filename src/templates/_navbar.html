@@ -1,5 +1,12 @@
-<li {% if active_link == "home" %}class="active"{% endif %}><a href="{% url 'home' %}">Home</a></li>
-<li {% if active_link == "about" %}class="active"{% endif %}><a href="{% url 'about' %}">About</a></li>
+<li {% if active_link == "home" %}class="active"{% endif %}>
+  <a href="{% url 'home' %}">Home</a>
+</li>
+<li {% if active_link == "spell_list" %}class="active"{% endif %}>
+  <a href="{% url 'spellbook:spell-list' %}">Spells</a>
+</li>
+<li {% if active_link == "spellbook_list" %}class="active"{% endif %}>
+  <a href="{% url 'spellbook:spellbook-list' %}">Spellbooks</a>
+</li>
 {% if current_page_label %}
   <li class="active"><a><b>| &nbsp; {{ current_page_label}}</b></a></li>
 {% endif %}
