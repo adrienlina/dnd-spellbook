@@ -183,3 +183,8 @@ body>.navbar-transparent {
 .form-box form .form-control:focus {
   z-index: 2;
 }
+
+.spell-description {
+  font-size: 0.85em;
+  color: rgb(100, 100, 100);
+}

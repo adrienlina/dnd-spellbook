@@ -3,16 +3,14 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{ block.super }}About{% endblock %}
+{% block title %}{{ block.super }}Spellbook detail{% endblock %}
 
 {% block navbar-left %}
-  {% include "_navbar.html" with active_link="about" %}
+  {% include "_navbar.html" with current_page_label='Spellbook detail' %}
 {% endblock %}
 
 {% block container %}
 <div class="col-sm-12">
-  <h1>Spellbook details</h1>
-
   <div class="row">
     <div class="col-md-6">
       <div class="well">

@@ -27,7 +27,7 @@
       <td>{{ spell.level }}</td>
       <td>{{ spell.cast_type }}</td>
       <td>{{ spell.spell_range }}</td>
-      <td>{{ spell.description }}</td>
+      <td class="spell-description">{{ spell.description |safe }}</td>
       {% if action_url %}
         <td>
           <form method="POST" action="{% url action_url action_param %}">
