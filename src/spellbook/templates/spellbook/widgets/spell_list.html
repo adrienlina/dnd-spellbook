@@ -2,9 +2,8 @@
   Required variables:
   - spells (the list of Spell objects to display)
   Possible variables:
-  - action_url
-  - action_param
-  - action_logo
+  - actions: a list of templates to include in the table
+  - spellbook: the spellbook being displayed, if any
 {% endcomment %}
 
 <table class="table table-striped">
@@ -15,9 +14,9 @@
       <th>Cast type</th>
       <th>Range</th>
       <th>Description</th>
-      {% if action_url %}
+      {% for action in actions %}
         <th></th>
-      {% endif %}
+      {% endfor %}
     </tr>
   </thead>
   <tbody class="overflow-y-scroll">
@@ -32,15 +31,11 @@
           {{ spell.description |safe }}
         </div>
       </td>
-      {% if action_url %}
+      {% for action in actions %}
         <td>
-          <form method="POST" action="{% url action_url action_param %}">
-            {% csrf_token %}
-            <input type="hidden" name="spell_pk" value={{ spell.pk }} />
-            <button type="submit" class="btn btn-info">{{ action_logo }}</button>
-          </form>
+          {% include action with spell=spell spellbook=spellbook %}
         </td>
-      {% endif %}
+      {% endfor %}
     </tr>
     {% endfor %}
   </tbody>

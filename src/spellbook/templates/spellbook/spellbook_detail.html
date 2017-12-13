@@ -16,7 +16,7 @@
       <div class="well max-height-full display-flex-column" style="background-color: rgb(220, 220, 220)">
         <h4>List of all spells</h4>
         <div class="overflow-y-scroll">
-          {% include "spellbook/widgets/spell_list.html" with spells=spells action_url='spellbook:spellbook-add-spell' action_param=spellbook.pk action_logo="+" %}
+          {% include "spellbook/widgets/spell_list.html" with spells=spells spellbook=spellbook actions=other_spell_actions %}
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div class="well max-height-full display-flex-column" style="background-color: rgb(255, 238, 204)">
         <h4>Spellbook {{ spellbook.name }}: spells available</h4>
         <div class="overflow-y-scroll">
-          {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells.all action_url='spellbook:spellbook-remove-spell' action_param=spellbook.pk action_logo="-" %}
+          {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells_with_preparations spellbook=spellbook actions=spellbook_spell_actions %}
         </div>
       </div>
     </div>

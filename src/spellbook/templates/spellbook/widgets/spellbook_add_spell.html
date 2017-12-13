@@ -1,0 +1,11 @@
+{% comment %}
+  Required variables:
+  - spellbook
+  - spell
+{% endcomment %}
+
+<form method="POST" action="{% url 'spellbook:spellbook-add-spell' spellbook.pk %}">
+  {% csrf_token %}
+  <input type="hidden" name="spell_pk" value={{ spell.pk }} />
+  <button type="submit" class="btn btn-info">+</button>
+</form>

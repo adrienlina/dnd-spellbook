@@ -1,11 +1,9 @@
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic.list import ListView
 
 from profiles.models import get_request_profile
-from spellbook.forms import SpellbookForm, SpellPkForm
-from spellbook.models import Spell, Spellbook, SpellUsage
+from spellbook.forms import SpellbookForm
+from spellbook.models import Spell, Spellbook
 
 
 class SpellbookListView(ListView):
@@ -28,25 +26,16 @@ def get_spellbook_details(request, pk):
     context = {
         'spellbook': spellbook,
         'spells': spells,
+        'spellbook_spell_actions': [
+            'spellbook/widgets/spellbook_prepare_spell.html',
+            'spellbook/widgets/spellbook_remove_spell.html',
+        ],
+        'other_spell_actions': [
+            'spellbook/widgets/spellbook_add_spell.html',
+        ],
     }
 
     return render(request, "spellbook/spellbook_detail.html", context)
-
-
-def add_spell_to_spellbook(request, pk):
-    """Add a spell to a spellbook"""
-    def add_spell_usage(spellbook, spell):
-        SpellUsage.objects.get_or_create(spell=spell, spellbook=spellbook)
-
-    return _handle_spell_usage_form(request, pk, add_spell_usage)
-
-
-def remove_spell_from_spellbook(request, pk):
-    """Remove a spell from a spellbook"""
-    def delete_spell_usage(spellbook, spell):
-        SpellUsage.objects.filter(spell=spell, spellbook=spellbook).delete()
-
-    return _handle_spell_usage_form(request, pk, delete_spell_usage)
 
 
 def create_spellbook(request):
@@ -59,21 +48,8 @@ def create_spellbook(request):
             spellbook.profile = get_request_profile(request)
             spellbook.save()
 
-            return HttpResponseRedirect(reverse('spellbook:spellbook-home'))
+            return redirect('spellbook:spellbook-detail', spellbook.pk)
     else:
         form = SpellbookForm()
 
         return render(request, 'spellbook/new_spellbook.html', {'form': form})
-
-
-def _handle_spell_usage_form(request, pk, handler):
-    """Handle a spell usage form and return to the spellbook detail view"""
-    if request.method == 'POST':
-        form = SpellPkForm(request.POST)
-        if form.is_valid():
-            spellbook = get_object_or_404(Spellbook, pk=pk)
-            spell = form.cleaned_data['spell']
-
-            handler(spellbook=spellbook, spell=spell)
-
-    return get_spellbook_details(request, pk)
