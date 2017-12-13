@@ -1,11 +1,16 @@
 @import "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css";
 
-html, body{
+html {
     height:100%;		/* For full height images */
+}
+body {
+  height: calc(100% - 50px);
+  overflow: hidden;
 }
 
 .content {
-  margin-top: 60px;
+  margin-top: 80px;
+  height: 80%;
 }
 
 .starter-template {
@@ -14,11 +19,11 @@ html, body{
 }
 
 .footer {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 40px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-top: 10px;
   border-top: 1px solid #eee;
-  font-size: 0.825em;
+  font-size: 0.725em;
   color: rgb(166, 166, 166);
 }
 
@@ -187,4 +192,16 @@ body>.navbar-transparent {
 .spell-description {
   font-size: 0.85em;
   color: rgb(100, 100, 100);
+}
+
+.max-height-full {
+  max-height: 100%;
+}
+
+.height-full {
+  height: 100%;
+}
+
+.overflowing-well {
+  overflow-y: scroll;
 }
