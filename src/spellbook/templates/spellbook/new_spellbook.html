@@ -3,22 +3,24 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{ block.super }}About{% endblock %}
+{% block title %}{{ block.super }}New spellbook{% endblock %}
 
 {% block navbar-left %}
   {% include "_navbar.html" with active_link="about" %}
 {% endblock %}
 
 {% block container %}
-<div class="container">
-  <h1>New spellbook</h1>
+<div class="no-scroll-content">
+  <div class="container">
+    <h1>New spellbook</h1>
 
-  <form action="" method="post">
-    {% csrf_token %}
-    <table>
-    {{ form }}
-    </table>
-    <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
+    <form action="" method="post">
+      {% csrf_token %}
+      <table>
+      {{ form }}
+      </table>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
 </div>
 {% endblock container %}
