@@ -32,4 +32,7 @@ class Profile(BaseProfile):
 
 def get_request_profile(request):
     """Get the user associated to a request"""
+    if not request.user.is_authenticated:
+        return None
+
     return Profile.objects.get(user=request.user)

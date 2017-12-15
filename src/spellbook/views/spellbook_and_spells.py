@@ -1,9 +1,13 @@
-from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
 from spellbook.forms import SpellPkForm
 from spellbook.models import Spellbook, SpellUsage
+from spellbook.permissions import needs_login_or_token
+from tools.build_url import build_url
 
 
+@needs_login_or_token
 def add_spell_to_spellbook(request, pk):
     """Add a spell to a spellbook"""
     def add_spell_usage(spellbook, spell):
@@ -13,6 +17,7 @@ def add_spell_to_spellbook(request, pk):
     return _handle_spell_usage_form(request, pk, add_spell_usage)
 
 
+@needs_login_or_token
 def remove_spell_from_spellbook(request, pk):
     """Remove a spell from a spellbook"""
     def delete_spell_usage(spellbook, spell):
@@ -23,6 +28,7 @@ def remove_spell_from_spellbook(request, pk):
     return _handle_spell_usage_form(request, pk, delete_spell_usage)
 
 
+@needs_login_or_token
 def prepare_spell_for_notebook(request, pk):
     """Prepare a spell of a notebook"""
     def prepare_spell(spellbook, spell):
@@ -33,6 +39,7 @@ def prepare_spell_for_notebook(request, pk):
     return _handle_spell_usage_form(request, pk, prepare_spell)
 
 
+@needs_login_or_token
 def unprepare_spell_for_notebook(request, pk):
     """Unprepare a spell of a notebook"""
     def unprepare_spell(spellbook, spell):
@@ -53,4 +60,9 @@ def _handle_spell_usage_form(request, pk, handler):
 
             handler(spellbook=spellbook, spell=spell)
 
-    return redirect('spellbook:spellbook-detail', pk)
+    return HttpResponseRedirect(
+        build_url('spellbook:spellbook-detail',
+                  args=[pk],
+                  get={'token': request.GET.get('token')},
+                  ),
+    )

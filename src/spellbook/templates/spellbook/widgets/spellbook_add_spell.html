@@ -4,7 +4,7 @@
   - spell
 {% endcomment %}
 
-<form method="POST" action="{% url 'spellbook:spellbook-add-spell' spellbook.pk %}">
+<form method="POST" action="{% url 'spellbook:spellbook-add-spell' spellbook.pk %}?token={{spellbook.token}}">
   {% csrf_token %}
   <input type="hidden" name="spell_pk" value={{ spell.pk }} />
   <button type="submit" class="btn btn-info">+</button>

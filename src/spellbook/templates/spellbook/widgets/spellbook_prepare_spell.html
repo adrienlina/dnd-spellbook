@@ -5,13 +5,13 @@
 {% endcomment %}
 
 {% if spell.is_prepared %}
-  <form method="POST" action="{% url 'spellbook:spellbook-unprepare-spell' spellbook.pk %}">
+  <form method="POST" action="{% url 'spellbook:spellbook-unprepare-spell' spellbook.pk %}?token={{spellbook.token}}">
     {% csrf_token %}
     <input type="hidden" name="spell_pk" value={{ spell.pk }} />
     <button type="submit" class="btn btn-info">Unprep</button>
   </form>
 {% else %}
-  <form method="POST" action="{% url 'spellbook:spellbook-prepare-spell' spellbook.pk %}">
+  <form method="POST" action="{% url 'spellbook:spellbook-prepare-spell' spellbook.pk %}?token={{spellbook.token}}">
     {% csrf_token %}
     <input type="hidden" name="spell_pk" value={{ spell.pk }} />
     <button type="submit" class="btn btn-info">Prep</button>
