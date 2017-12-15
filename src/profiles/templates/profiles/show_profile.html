@@ -5,6 +5,10 @@
 
 {% block title %}{{ block.super }}Profile{% endblock %}
 
+{% block navbar-left %}
+  {% include "_navbar.html" %}
+{% endblock %}
+
 {% block container %}
 
 <div class="container profile-head">
@@ -58,5 +62,3 @@
 </div>
 
 {% endblock %}
-
-
