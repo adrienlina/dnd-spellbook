@@ -63,6 +63,6 @@ def _handle_spell_usage_form(request, pk, handler):
     return HttpResponseRedirect(
         build_url('spellbook:spellbook-detail',
                   args=[pk],
-                  get={'token': request.GET.get('token')},
+                  get=request.GET,  # pass token if necessary
                   ),
     )
