@@ -33,6 +33,7 @@ class SpellbookModelCase(TestCase):
             Spellbook.objects.count(),
             n_spellbooks + 1,
         )
+        self.assertTrue(bool(spellbook.token))  # Token should not be empty
 
     def test_1_add_spell(self):
         """It should be possible to add and remove a spell to a spellbook"""

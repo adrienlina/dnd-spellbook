@@ -7,7 +7,10 @@ from spellbook.models import Spell, Spellbook
 User = get_user_model()
 
 
-class SpellbookModelCase(TestCase):
+class SpellbookDetailsCase(TestCase):
+    """
+    A spellbook should be editable through the spellbook details page
+    """
 
     @classmethod
     def setUpTestData(cls):  # noqa: N802
