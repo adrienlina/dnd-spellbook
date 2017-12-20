@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from profiles.models import get_request_profile
 from spellbook.forms import SpellbookForm
 from spellbook.models import Spell, Spellbook
+from spellbook.permissions import needs_login, needs_login_or_token
 
 
 class SpellbookListView(ListView):
@@ -18,6 +19,7 @@ class SpellbookListView(ListView):
         return Spellbook.objects.filter(profile=profile)
 
 
+@needs_login_or_token
 def get_spellbook_details(request, pk):
     """Show the details of a given spellbook"""
     spellbook = get_object_or_404(Spellbook, pk=pk)
@@ -38,6 +40,7 @@ def get_spellbook_details(request, pk):
     return render(request, "spellbook/spellbook_detail.html", context)
 
 
+@needs_login
 def create_spellbook(request):
     """Show a form to create a new spellbook"""
     if request.method == 'POST':

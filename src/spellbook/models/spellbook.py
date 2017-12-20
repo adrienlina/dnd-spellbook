@@ -1,6 +1,7 @@
 from django.db import models
 
 from profiles.models import Profile
+from tools.random_token import generate_random_token
 
 from .spell import Spell
 
@@ -19,6 +20,9 @@ class Spellbook(models.Model):
 
     """Spells present in the spellbook"""
     spells = models.ManyToManyField(Spell, through='SpellUsage')
+
+    """Token that gives access to the spellbook, independently to the profile"""
+    token = models.CharField(max_length=32, default=generate_random_token)
 
     @property
     def n_spells(self):
