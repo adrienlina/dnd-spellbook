@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from profiles.models import Profile
 from spellbook.models import Spell, Spellbook
 
 User = get_user_model()
@@ -14,15 +13,14 @@ class SpellbookModelCase(TestCase):
     def setUpTestData(cls):  # noqa: N802
         """Set up a user with a spellbook and some spells"""
         # We need a profile for a spellbook, thus we need a django user
-        cls.user = User(email="email@email.com", password="password")
-        cls.user.save()
-
-        cls.profile = Profile(user=cls.user)
-        cls.profile.save()
+        cls.user = User.objects.create_user(
+            email='test@user.com',
+            password='password',
+        )
 
         cls.spellbook = Spellbook(
             name="spellbook_name",
-            profile=cls.profile,
+            profile=cls.user.profile,
         )
         cls.spellbook.save()
 
@@ -47,7 +45,7 @@ class SpellbookModelCase(TestCase):
 
     def setUp(self):  # noqa: N802
         """Log in as the user"""
-        self.client.login(email=self.user.email, password=self.user.password)
+        self.client.login(username='test@user.com', password='password')
 
     def test_0_view_spellbook(self):
         """It should be possible to view the spellbook page"""
