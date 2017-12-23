@@ -10,12 +10,12 @@
   <form method="POST" action="{% spellbook_url 'spellbook:spellbook-unprepare-spell' spellbook %}">
     {% csrf_token %}
     <input type="hidden" name="spell_pk" value={{ spell.pk }} />
-    <button type="submit" class="btn btn-info">Unprep</button>
+    <button type="submit" class="btn btn-info" title="Unrepare spell">Unprep</button>
   </form>
 {% else %}
   <form method="POST" action="{% spellbook_url 'spellbook:spellbook-prepare-spell' spellbook %}">
     {% csrf_token %}
     <input type="hidden" name="spell_pk" value={{ spell.pk }} />
-    <button type="submit" class="btn btn-info">Prep</button>
+    <button type="submit" class="btn btn-info" title="Prepare spell">Prep</button>
   </form>
 {% endif %}

@@ -33,6 +33,13 @@ class Spell(models.Model):
         verbose_name="Description",
     )
 
+    @property
+    def level_as_dnd_format(self):
+        if self.level == 0:
+            return "Cantrip"
+
+        return "Level %s" % self.level
+
     def __repr__(self):
         return "<Spell %s>" % self.name
 

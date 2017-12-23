@@ -40,16 +40,3 @@
     {% endfor %}
   </tbody>
 </table>
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  jQuery('.spell-description').unbind().click(function(event) {
-    var elem = jQuery(this);
-    if (elem.hasClass('show-full')) {
-      elem.removeClass('show-full')
-    } else {
-      elem.addClass('show-full')
-    }
-  });
-}, false);
-</script>

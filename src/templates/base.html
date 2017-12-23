@@ -16,6 +16,7 @@
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'site/css/print.css' %}" rel="stylesheet" media="print">
     {% block styles %}
     {% endblock styles %}
 
@@ -110,6 +111,18 @@
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      jQuery('.spell-description').unbind().click(function(event) {
+        var elem = jQuery(this);
+        if (elem.hasClass('show-full')) {
+          elem.removeClass('show-full')
+        } else {
+          elem.addClass('show-full')
+        }
+      });
+    }, false);
+    </script>
     {% block scripts %}
     {% endblock scripts %}
   </body>

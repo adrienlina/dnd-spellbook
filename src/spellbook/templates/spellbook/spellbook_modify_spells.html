@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load absolute_url %}
+{% load spellbook_url %}
+
+{% block title %}{{ block.super }}Spellbook detail{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with current_page_label='Spellbook detail' %}
+{% endblock %}
+
+{% block container %}
+<div class="no-scroll-content">
+  <div class="col-sm-12 height-full">
+    <div class="row height-full">
+      <div class="col-md-6 height-full">
+        <div class="well max-height-full display-flex-column" style="background-color: rgb(220, 220, 220)">
+          <h4>List of all spells</h4>
+          <div class="overflow-y-scroll">
+            {% include "spellbook/widgets/spell_list.html" with spells=spells spellbook=spellbook actions=other_spell_actions %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 height-full">
+        <div class="well max-height-full display-flex-column" style="background-color: rgb(255, 238, 204)">
+          <div class="row">
+            <h4 class="col-sm-8">Spellbook {{ spellbook.name }}: spells available</h4>
+            <div class="col-sm-offset-2 col-sm-2">
+              <a href="{% spellbook_url 'spellbook:spellbook-detail-view' spellbook %}" class="btn btn-primary" type="button">
+                View
+              </a>
+            </div>
+          </div>
+          <div class="small">
+            Share link:
+            <a href="{% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
+              {% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}
+            </a>
+          </div>
+          <div class="overflow-y-scroll">
+            {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells_with_preparations spellbook=spellbook actions=spellbook_spell_actions %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock container %}
