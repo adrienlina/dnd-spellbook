@@ -5,7 +5,7 @@ from braces import views as bracesviews
 from django.conf import settings
 from django.contrib import auth, messages
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from django.views import generic
 
 from . import forms

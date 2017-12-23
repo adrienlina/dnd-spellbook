@@ -1,6 +1,7 @@
-from .base import *             # NOQA
-import sys
 import logging.config
+import sys
+
+from .base import *  # NOQA
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -16,7 +17,7 @@ INSTALLED_APPS += (
     'debug_toolbar',)
 
 # Additional middleware introduced by debug toolbar
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE += (
     'debug_toolbar.middleware.DebugToolbarMiddleware',)
 
 # Show emails to console in DEBUG mode

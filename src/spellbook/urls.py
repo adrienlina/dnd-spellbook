@@ -7,6 +7,8 @@ from spellbook.views.spellbook_and_spells import (add_spell_to_spellbook,
                                                   remove_spell_from_spellbook,
                                                   unprepare_spell_for_notebook)
 
+app_name = "spellbook"
+
 urlpatterns = [
     url(r'^home$', SpellListView.as_view(), name='spellbook-home'),
     url(r'^spells$', SpellListView.as_view(), name='spell-list'),
