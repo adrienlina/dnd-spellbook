@@ -7,8 +7,13 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-from django.core.urlresolvers import reverse_lazy
-from os.path import dirname, join, exists
+from os.path import dirname, exists, join
+
+# Use 12factor inspired environment variables or from a file
+import environ
+# For Bootstrap 3, change error alert to 'danger'
+from django.contrib import messages
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: join(BASE_DIR, "directory")
 BASE_DIR = dirname(dirname(dirname(__file__)))
@@ -41,8 +46,6 @@ TEMPLATES = [
     },
 ]
 
-# Use 12factor inspired environment variables or from a file
-import environ
 env = environ.Env()
 
 # Ideally move env file should be outside the git repo
@@ -81,12 +84,11 @@ INSTALLED_APPS = (
 
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -127,8 +129,6 @@ ALLOWED_HOSTS = []
 # Crispy Form Theme - Bootstrap 3
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-# For Bootstrap 3, change error alert to 'danger'
-from django.contrib import messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }

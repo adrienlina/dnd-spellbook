@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from authtools.admin import NamedUserAdmin
 from django.contrib import admin
 from django.contrib.auth import get_user_model
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from .models import Profile
 
