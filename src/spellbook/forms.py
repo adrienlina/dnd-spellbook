@@ -19,8 +19,7 @@ class SpellbookSlotsForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(SpellbookSlotsForm, self).__init__(*args, **kwargs)
 
-        for spell_slot_name, slot_level in zip(self.slot_level_field_names,
-                                               AVAILABLE_SLOTS_LEVELS):
+        for spell_slot_name in self.slot_level_field_names:
             self.fields[spell_slot_name] = forms.IntegerField(
                 label=spell_slot_name,
                 min_value=0,

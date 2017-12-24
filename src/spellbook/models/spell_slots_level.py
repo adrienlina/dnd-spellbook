@@ -3,6 +3,11 @@ from django.db import models
 from .spellbook import Spellbook
 
 AVAILABLE_SLOTS_LEVELS = range(1, 10)
+DEFAULT_SLOTS = [{
+    'level': 1,
+    'max_capacity': 1,
+    'current_capacity': 1,
+}]
 
 
 class SpellSlotsLevel(models.Model):
@@ -21,14 +26,14 @@ class SpellSlotsLevel(models.Model):
     current_capacity = models.PositiveIntegerField(
         verbose_name="Current capacity",
         null=True,
-        default=0
+        default=0,
     )
 
     """Maximum number of spells available to be used when character has had a long rest"""
     max_capacity = models.PositiveIntegerField(
         verbose_name="Maximum capacity",
         null=True,
-        default=0
+        default=0,
     )
 
     class Meta:

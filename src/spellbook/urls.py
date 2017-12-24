@@ -39,8 +39,7 @@ urlpatterns = [
          name='spellbook-unprepare-spell'),
     path('spellbooks/<int:pk>/spell-slots',
          edit_spellbook_slots,
-         name="spellbook-edit-slots",
-    ),
+         name="spellbook-edit-slots"),
 
     path('spellbooks/new',
          create_spellbook,

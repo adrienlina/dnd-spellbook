@@ -34,13 +34,13 @@ def edit_spellbook_slots(request, pk):
 
     slots = [{
         'level': slot_level,
-        'default_value': _get_default_slot_value(spellbook, slot_level)
+        'default_value': _get_default_slot_value(spellbook, slot_level),
     } for slot_level in AVAILABLE_SLOTS_LEVELS]
 
     context = {
         'spellbook': spellbook,
         'form': form,
-        'slots': slots
+        'slots': slots,
     }
 
     return render(request, 'spellbook/spellbook_edit_slots.html', context)
