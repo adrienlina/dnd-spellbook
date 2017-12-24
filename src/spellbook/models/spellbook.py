@@ -46,6 +46,10 @@ class Spellbook(models.Model):
 
         return spells_with_preparations
 
+    def slot_level(self, level):
+        """Return the spell slot of a given level"""
+        return self.slots.get(level=level)
+
 
 class SpellUsage(models.Model):
     """Link between a spell and a spellbook that defines if it is prepared"""

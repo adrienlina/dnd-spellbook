@@ -25,6 +25,15 @@
       </a>
     </div>
     <div class="row">
+      {% for spell_slot_level in spellbook.slots.all %}
+        {% if spell_slot_level.max_capacity %}
+          <div class="well col-xs-1">
+            {{ spell_slot_level.current_capacity }} / {{ spell_slot_level.max_capacity }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="row">
       {% for spell_level, spells in spells_by_level.items %}
         <div class="col-sm-3 spell-level-column">
           <h4>{{ spells.0.level_as_dnd_format }}</h4>

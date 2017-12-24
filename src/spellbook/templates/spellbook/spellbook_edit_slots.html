@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load absolute_url %}
+{% load spellbook_url %}
+
+{% block title %}{{ block.super }}Spellbook detail{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with current_page_label='Spellbook detail' %}
+{% endblock %}
+
+{% block container %}
+<div class="no-scroll-content">
+  <div class="col-sm-12 height-full">
+    <h3>Spellbook {{ spellbook.name }}: slots available</h3>
+    <form method="POST" action="{% spellbook_url 'spellbook:spellbook-edit-slots' spellbook %}">
+      {% csrf_token %}
+      <input type="hidden" name="spellbook_pk" value={{spellbook.pk}} />
+      <div class="row">
+        {% for slot in slots %}
+          <div class="col-sm-1 slot-level__container">
+            <label>Level {{ slot.level }}</label>
+            <input type="number" name="spell_slots_level_{{ slot.level }}" value={{ slot.default_value }} style="width: 100%"/>
+          </div>
+        {% endfor %}
+      </div>
+      <button type="submit" class="btn btn-info" title="Save">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock container %}

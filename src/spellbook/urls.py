@@ -4,6 +4,7 @@ from django.urls import path
 from spellbook.views.spell import SpellListView
 from spellbook.views.spellbook import (SpellbookListView, create_spellbook, spellbook_detail_view,
                                        spellbook_modify_spells_view)
+from spellbook.views.spellbook_and_slots import edit_spellbook_slots
 from spellbook.views.spellbook_and_spells import (add_spell_to_spellbook,
                                                   prepare_spell_for_notebook,
                                                   remove_spell_from_spellbook,
@@ -36,6 +37,11 @@ urlpatterns = [
     path('spellbooks/<int:pk>/unprepare',
          unprepare_spell_for_notebook,
          name='spellbook-unprepare-spell'),
+    path('spellbooks/<int:pk>/spell-slots',
+         edit_spellbook_slots,
+         name="spellbook-edit-slots",
+    ),
+
     path('spellbooks/new',
          create_spellbook,
          name='spellbook-new'),

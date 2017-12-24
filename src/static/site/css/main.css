@@ -229,3 +229,7 @@ body>.navbar-transparent {
 .spell-level-column:last-child {
   margin-right: 0px;
 }
+
+.slot-level__container {
+  padding: 5px;
+}
