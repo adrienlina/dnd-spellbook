@@ -9,5 +9,5 @@
 <form method="POST" action="{% spellbook_url 'spellbook:spellbook-remove-spell' spellbook %}">
   {% csrf_token %}
   <input type="hidden" name="spell_pk" value={{ spell.pk }} />
-  <button type="submit" class="btn btn-info">-</button>
+  <button type="submit" class="btn btn-info" title="Remove spell from spellbook">-</button>
 </form>

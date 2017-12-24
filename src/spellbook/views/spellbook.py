@@ -20,10 +20,32 @@ class SpellbookListView(ListView):
 
 
 @needs_login_or_token
-def get_spellbook_details(request, pk):
+def spellbook_detail_view(request, pk):
     """Show the details of a given spellbook"""
     spellbook = get_object_or_404(Spellbook, pk=pk)
-    spells = Spell.objects.all()
+
+    spells_by_level = {}
+    for spell in spellbook.spells_with_preparations:
+        if spell.level not in spells_by_level:
+            spells_by_level[spell.level] = []
+        spells_by_level[spell.level].append(spell)
+
+    context = {
+        'spellbook': spellbook,
+        'spells_by_level': spells_by_level,
+    }
+
+    return render(request, "spellbook/spellbook_detail.html", context)
+
+
+@needs_login_or_token
+def spellbook_modify_spells_view(request, pk):
+    """Show the list of spells of a spellbook and the available spells"""
+    spellbook = get_object_or_404(Spellbook, pk=pk)
+    spellbook_spells = spellbook.spells.all()
+    spells = [spell
+              for spell in Spell.objects.all()
+              if spell not in spellbook_spells]
 
     context = {
         'spellbook': spellbook,
@@ -37,7 +59,7 @@ def get_spellbook_details(request, pk):
         ],
     }
 
-    return render(request, "spellbook/spellbook_detail.html", context)
+    return render(request, "spellbook/spellbook_modify_spells.html", context)
 
 
 @needs_login

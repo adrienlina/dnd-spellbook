@@ -221,3 +221,11 @@ body>.navbar-transparent {
 .overflow-y-scroll {
   overflow-y: scroll;
 }
+
+.spell-level-column {
+  margin-right: 12px;
+}
+
+.spell-level-column:last-child {
+  margin-right: 0px;
+}

@@ -6,6 +6,10 @@
 
 {% block title %}{{ block.super }}Spellbook detail{% endblock %}
 
+{% block styles %}
+<link href="{% static 'site/css/forcepagescroll.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block navbar-left %}
   {% include "_navbar.html" with current_page_label='Spellbook detail' %}
 {% endblock %}
@@ -13,29 +17,40 @@
 {% block container %}
 <div class="no-scroll-content">
   <div class="col-sm-12 height-full">
-    <div class="row height-full">
-      <div class="col-md-6 height-full">
-        <div class="well max-height-full display-flex-column" style="background-color: rgb(220, 220, 220)">
-          <h4>List of all spells</h4>
-          <div class="overflow-y-scroll">
-            {% include "spellbook/widgets/spell_list.html" with spells=spells spellbook=spellbook actions=other_spell_actions %}
+    <h3>Spellbook {{ spellbook.name }}: spells available</h3>
+    <div class="small">
+      Share link:
+      <a href="{% absolute_url 'spellbook:spellbook-detail-view' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
+        {% absolute_url 'spellbook:spellbook-detail-view' spellbook.pk %}?token={{spellbook.token}}
+      </a>
+    </div>
+    <div class="row">
+      {% for spell_level, spells in spells_by_level.items %}
+        <div class="col-sm-3 spell-level-column">
+          <h4>{{ spells.0.level_as_dnd_format }}</h4>
+          <div class="row">
+            {% for spell in spells %}
+              <div class="col-sm-12 well">
+                <h4>
+                  {{ spell.name }} ({{ spell.level_as_dnd_format }})
+                  {% if spell.is_prepared %}
+                    <span class="pull-right glyphicon glyphicon-ok-circle" title="Spell prepared"></span>
+                  {% endif %}
+                </h4>
+                <div class="row">
+                  <div class="col-xs-6">
+                    Type: {{ spell.cast_type }}
+                  </div>
+                  <div class="col-xs-6">
+                    Range: {{ spell.spell_range }}
+                  </div>
+                </div>
+                <p class="spell-description">{{ spell.description |safe }}</p>
+              </div>
+            {% endfor %}
           </div>
         </div>
-      </div>
-      <div class="col-md-6 height-full">
-        <div class="well max-height-full display-flex-column" style="background-color: rgb(255, 238, 204)">
-          <h4>Spellbook {{ spellbook.name }}: spells available</h4>
-          <div class="small">
-            Share link:
-            <a href="{% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
-              {% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}
-            </a>
-          </div>
-          <div class="overflow-y-scroll">
-            {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells_with_preparations spellbook=spellbook actions=spellbook_spell_actions %}
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
