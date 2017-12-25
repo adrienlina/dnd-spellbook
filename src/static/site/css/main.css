@@ -233,3 +233,8 @@ body>.navbar-transparent {
 .slot-level__container {
   padding: 5px;
 }
+
+.spellbook-detail__spell-level-title {
+  padding-top: 13px;
+  padding-bottom: 27px;
+}

@@ -47,6 +47,11 @@ def edit_spellbook_slots(request, pk):
 
 
 def _get_default_slot_value(spellbook, level):
+    """
+    Get the default value of a slot maximum capacity:
+    - the existing maximum capacity if the slot already exists
+    - 0 in other cases
+    """
     try:
         return spellbook.slot_level(level).max_capacity
     except AttributeError:

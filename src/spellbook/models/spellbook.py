@@ -48,7 +48,10 @@ class Spellbook(models.Model):
 
     def slot_level(self, level):
         """Return the spell slot of a given level"""
-        return self.slots.get(level=level)
+        try:
+            return self.slots.get(level=level)
+        except models.ObjectDoesNotExist:
+            return None
 
 
 class SpellUsage(models.Model):
