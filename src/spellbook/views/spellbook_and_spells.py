@@ -58,4 +58,4 @@ def _handle_spell_usage_form(request, pk, handler):
 
             handler(spellbook=spellbook, spell=spell)
 
-    return redirect_with_token(request, 'spellbook:spellbook-detail', pk)
+    return redirect_with_token(request, 'spellbook:spellbook-edit-spells', pk)

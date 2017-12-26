@@ -44,7 +44,7 @@ class Spellbook(models.Model):
             spell.is_prepared = self.has_spell_prepared(spell)
             spells_with_preparations.append(spell)
 
-        return spells_with_preparations
+        return sorted(spells_with_preparations, key=lambda spell: ~spell.is_prepared)
 
     def slot_level(self, level):
         """Return the spell slot of a given level"""

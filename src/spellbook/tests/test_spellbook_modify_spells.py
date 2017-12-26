@@ -50,10 +50,10 @@ class SpellbookDetailsCase(TestCase):
         """Log in as the user"""
         self.client.login(username='test@user.com', password='password')
 
-    def test_0_view_spellbook(self):
-        """It should be possible to view the spellbook page"""
+    def test_0_view_spellbook_and_spelss(self):
+        """It should be possible to view the spellbook and spells page"""
 
-        url = reverse('spellbook:spellbook-detail', kwargs={'pk': self.spellbook.pk})
+        url = reverse('spellbook:spellbook-edit-spells', kwargs={'pk': self.spellbook.pk})
         r = self.client.get(url)
         self.assertEqual(r.status_code, 200)
 

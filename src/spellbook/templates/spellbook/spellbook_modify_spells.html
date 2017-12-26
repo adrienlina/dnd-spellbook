@@ -28,15 +28,15 @@
           <div class="row">
             <h4 class="col-sm-8">Spellbook {{ spellbook.name }}: spells available</h4>
             <div class="col-sm-offset-2 col-sm-2">
-              <a href="{% spellbook_url 'spellbook:spellbook-detail-view' spellbook %}" class="btn btn-primary" type="button">
+              <a href="{% spellbook_url 'spellbook:spellbook-detail' spellbook %}" class="btn btn-primary" type="button">
                 View
               </a>
             </div>
           </div>
           <div class="small">
             Share link:
-            <a href="{% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
-              {% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}
+            <a href="{% absolute_url 'spellbook:spellbook-edit-spells' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
+              {% absolute_url 'spellbook:spellbook-edit-spells' spellbook.pk %}?token={{spellbook.token}}
             </a>
           </div>
           <div class="overflow-y-scroll">

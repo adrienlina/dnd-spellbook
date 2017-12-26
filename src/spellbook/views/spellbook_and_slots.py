@@ -24,9 +24,7 @@ def edit_spellbook_slots(request, pk):
                     },
                 )
 
-            return redirect_with_token(request,
-                                       'spellbook:spellbook-detail-view',
-                                       pk)
+            return redirect_with_token(request, 'spellbook:spellbook-detail', pk)
 
     slots = [{
         'level': slot_level,
@@ -53,7 +51,7 @@ def use_spellbook_slot(request, pk, slot_level):
     except ValidationError:
         pass
 
-    return redirect_with_token(request, 'spellbook:spellbook-detail-view', pk)
+    return redirect_with_token(request, 'spellbook:spellbook-detail', pk)
 
 
 @needs_login_or_token
@@ -66,7 +64,7 @@ def reset_spellbook_slots(request, pk, slot_level=None):
     else:
         spellbook.reset_slots()
 
-    return redirect_with_token(request, 'spellbook:spellbook-detail-view', pk)
+    return redirect_with_token(request, 'spellbook:spellbook-detail', pk)
 
 
 def _get_default_slot_value(spellbook, level):

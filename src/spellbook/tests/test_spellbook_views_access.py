@@ -16,7 +16,7 @@ class SpellbookDetailsAccessCase(TestCase):
     spellbook_detail_routes = [
         # Tupple(route, additional_route_args)
         ('spellbook:spellbook-detail',),
-        ('spellbook:spellbook-detail-view',),
+        ('spellbook:spellbook-edit-spells',),
         ('spellbook:spellbook-add-spell',),
         ('spellbook:spellbook-remove-spell',),
         ('spellbook:spellbook-prepare-spell',),
