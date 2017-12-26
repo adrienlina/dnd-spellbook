@@ -1,0 +1,37 @@
+{% comment %}
+  This widget needs the scripts widget 'spell_list_with_search_scripts.html' to work
+  Possible variables:
+  - actions: a list of templates to include in the table (only )
+{% endcomment %}
+
+<div class="height-full" style="max-height: calc(100% - 10px)" id="spell-list">
+  <div class="row">
+    <div class="col-sm-3">
+      <input class="search form-control" placeholder="Search" />
+    </div>
+    <button class="sort btn" data-sort="name"><span class="glyphicon glyphicon-arrow-up"></span> name</button>
+    <button class="sort btn" data-sort="level"><span class="glyphicon glyphicon-arrow-up"></span> level</button>
+    <button class="sort btn" data-sort="cast_type"><span class="glyphicon glyphicon-arrow-up"></span> cast type</button>
+    <button class="sort btn" data-sort="spell_range"><span class="glyphicon glyphicon-arrow-up"></span> range</button>
+  </div>
+  <table class="table table-striped height-full spell-table" style="display: block;">
+    <thead class="">
+      <tr>
+        <th>Spell Name</th>
+        <th>Level</th>
+        <th>Cast type</th>
+        <th>Range</th>
+        <th>Description</th>
+        {% for action in actions %}
+          <th></th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody class="overflow-y-scroll list" style="display: block; max-height: 80%">
+      {% comment %}
+        ListJS will insert the spells here. See http://listjs.com/ and
+        'spell_list_with_search_scripts.html'
+      {% endcomment %}
+    </tbody>
+  </table>
+</div>

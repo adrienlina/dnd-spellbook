@@ -17,6 +17,9 @@ urlpatterns = [
     url(r'^home$', SpellListView.as_view(), name='spellbook-home'),
     url(r'^spells$', SpellListView.as_view(), name='spell-list'),
     url(r'^json/spells$', spell_list_json, name='json-spell-list'),
+    path('json/spells/<int:spellbook_pk>/',
+         spell_list_json,
+         name='json-spell-list'),
 
     # Spellbooks related
     url(r'^spellbooks/$',
