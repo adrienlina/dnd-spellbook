@@ -40,6 +40,10 @@ class SpellbookModelCase(TestCase):
             spellbook.slots.count(),
             1,
         )
+        self.assertEqual(
+            spellbook.slot_level(1).max_capacity,
+            2,
+        )
 
     def test_1_add_spell(self):
         """It should be possible to add and remove a spell to a spellbook"""

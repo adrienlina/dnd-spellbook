@@ -6,8 +6,8 @@ from .spellbook import Spellbook
 AVAILABLE_SLOTS_LEVELS = range(1, 10)
 DEFAULT_SLOTS = [{
     'level': 1,
-    'max_capacity': 1,
-    'current_capacity': 1,
+    'max_capacity': 2,
+    'current_capacity': 2,
 }]
 
 

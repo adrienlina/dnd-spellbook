@@ -28,8 +28,8 @@ class SpellbookSlotsForm(forms.Form):
     def clean_spellbook_pk(self):
         pk = self.cleaned_data['spellbook_pk']
         try:
-            self.cleaned_data['spellbook'] = Spell.objects.get(pk=pk)
-        except Spell.DoesNotExist:
+            self.cleaned_data['spellbook'] = Spellbook.objects.get(pk=pk)
+        except Spellbook.DoesNotExist:
             raise forms.ValidationError("The spellbook does not exist")
 
         return pk
