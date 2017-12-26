@@ -17,15 +17,21 @@ urlpatterns = [
     url(r'^home$', SpellListView.as_view(), name='spellbook-home'),
     url(r'^spells$', SpellListView.as_view(), name='spell-list'),
 
+    # Spellbooks related
     url(r'^spellbooks/$',
         SpellbookListView.as_view(),
         name='spellbook-list'),
+    path('spellbooks/new',
+         create_spellbook,
+         name='spellbook-new'),
     path('spellbooks/<int:pk>/',
-         spellbook_modify_spells_view,
-         name='spellbook-detail'),
-    path('spellbooks/<int:pk>/view',
          spellbook_detail_view,
-         name='spellbook-detail-view'),
+         name='spellbook-detail'),
+
+    # Spells usage related
+    path('spellbooks/<int:pk>/edit-spells',
+         spellbook_modify_spells_view,
+         name='spellbook-edit-spells'),
     path('spellbooks/<int:pk>/add',
          add_spell_to_spellbook,
          name='spellbook-add-spell'),
@@ -39,6 +45,7 @@ urlpatterns = [
          unprepare_spell_for_notebook,
          name='spellbook-unprepare-spell'),
 
+    # Spell slots related
     path('spellbooks/<int:pk>/spell-slots',
          edit_spellbook_slots,
          name="spellbook-edit-slots"),
@@ -51,8 +58,4 @@ urlpatterns = [
     path('spellbooks/<int:pk>/reset-slots/<int:slot_level>',
          reset_spellbook_slots,
          name="spellbook-reset-slots"),
-
-    path('spellbooks/new',
-         create_spellbook,
-         name='spellbook-new'),
 ]

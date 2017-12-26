@@ -79,7 +79,7 @@ def create_spellbook(request):
             spellbook.profile = get_request_profile(request)
             spellbook.save()
 
-            return redirect('spellbook:spellbook-detail', spellbook.pk)
+            return redirect('spellbook:spellbook-edit-spells', spellbook.pk)
     else:
         form = SpellbookForm()
 

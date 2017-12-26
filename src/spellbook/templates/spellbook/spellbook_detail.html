@@ -21,11 +21,11 @@
     <h3>Spellbook {{ spellbook.name }}: spells available</h3>
     <div class="small">
       Share link:
-      <a href="{% absolute_url 'spellbook:spellbook-detail-view' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
-        {% absolute_url 'spellbook:spellbook-detail-view' spellbook.pk %}?token={{spellbook.token}}
+      <a href="{% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
+        {% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}
       </a>
     </div>
-    <a href="{% spellbook_url 'spellbook:spellbook-detail' spellbook %}" type="button" class="btn btn-info">Edit spells</a>
+    <a href="{% spellbook_url 'spellbook:spellbook-edit-spells' spellbook %}" type="button" class="btn btn-info">Edit spells</a>
     <a href="{% spellbook_url 'spellbook:spellbook-edit-slots' spellbook %}" type="button" class="btn btn-info">Edit slots</a>
     <a href="{% spellbook_url 'spellbook:spellbook-reset-slots' spellbook %}" type="button" class="btn btn-primary">Reset all slots</a>
     <div class="row">
