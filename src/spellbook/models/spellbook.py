@@ -53,6 +53,10 @@ class Spellbook(models.Model):
         except models.ObjectDoesNotExist:
             return None
 
+    def reset_slots(self):
+        """Reset all available slots capacity to their maximum"""
+        self.slots.all().update(current_capacity=models.F('max_capacity'))
+
 
 class SpellUsage(models.Model):
     """Link between a spell and a spellbook that defines if it is prepared"""

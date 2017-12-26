@@ -1,10 +1,8 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 
 from spellbook.forms import SpellPkForm
 from spellbook.models import Spellbook, SpellUsage
-from spellbook.permissions import needs_login_or_token
-from tools.build_url import build_url
+from spellbook.permissions import needs_login_or_token, redirect_with_token
 
 
 @needs_login_or_token
@@ -60,9 +58,4 @@ def _handle_spell_usage_form(request, pk, handler):
 
             handler(spellbook=spellbook, spell=spell)
 
-    return HttpResponseRedirect(
-        build_url('spellbook:spellbook-detail',
-                  args=[pk],
-                  get=request.GET,  # pass token if necessary
-                  ),
-    )
+    return redirect_with_token(request, 'spellbook:spellbook-detail', pk)

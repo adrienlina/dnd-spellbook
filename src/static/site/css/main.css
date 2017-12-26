@@ -222,6 +222,15 @@ body>.navbar-transparent {
   overflow-y: scroll;
 }
 
+.flex-container {
+  display: flex;
+}
+
+.flex-center {
+  flex: 1;
+  text-align: center;
+}
+
 .spell-level-column {
   margin-right: 12px;
 }

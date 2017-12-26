@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from .spellbook import Spellbook
@@ -41,3 +42,16 @@ class SpellSlotsLevel(models.Model):
             # A spellbook can only have one spell slots level of each level
             ('spellbook', 'level'),
         ]
+
+    def use_slot(self):
+        """Use a slot of the given level"""
+        if self.current_capacity <= 0:
+            raise ValidationError('No slots of that level is available to be used')
+
+        self.current_capacity -= 1
+        self.save()
+
+    def reset_slots(self):
+        """Reset available slots capacity to the maximum"""
+        self.current_capacity = models.F('max_capacity')
+        self.save()

@@ -14,12 +14,17 @@ class SpellbookDetailsAccessCase(TestCase):
     """
 
     spellbook_detail_routes = [
-        'spellbook:spellbook-detail',
-        'spellbook:spellbook-detail-view',
-        'spellbook:spellbook-add-spell',
-        'spellbook:spellbook-remove-spell',
-        'spellbook:spellbook-prepare-spell',
-        'spellbook:spellbook-unprepare-spell',
+        # Tupple(route, additional_route_args)
+        ('spellbook:spellbook-detail',),
+        ('spellbook:spellbook-detail-view',),
+        ('spellbook:spellbook-add-spell',),
+        ('spellbook:spellbook-remove-spell',),
+        ('spellbook:spellbook-prepare-spell',),
+        ('spellbook:spellbook-unprepare-spell',),
+        ('spellbook:spellbook-edit-slots',),
+        ('spellbook:spellbook-use-slot', 1),
+        ('spellbook:spellbook-reset-slots',),
+        ('spellbook:spellbook-reset-slots', 1),
     ]
 
     @classmethod
@@ -47,8 +52,8 @@ class SpellbookDetailsAccessCase(TestCase):
         It should not be possible to view the spellbook page if the user is
         anonymous
         """
-        for route in self.spellbook_detail_routes:
-            url = reverse(route, kwargs={'pk': self.spellbook.pk})
+        for route, *args in self.spellbook_detail_routes:
+            url = reverse(route, args=[self.spellbook.pk, *args])
             r = self.client.get(url)
             self.assertEqual(r.status_code, 404)
 
@@ -59,8 +64,8 @@ class SpellbookDetailsAccessCase(TestCase):
         """
         self.client.login(username='test2@user.com', password='password')
 
-        for route in self.spellbook_detail_routes:
-            url = reverse(route, kwargs={'pk': self.spellbook.pk})
+        for route, *args in self.spellbook_detail_routes:
+            url = reverse(route, args=[self.spellbook.pk, *args])
             r = self.client.get(url)
             self.assertEqual(r.status_code, 404)
 
@@ -69,8 +74,8 @@ class SpellbookDetailsAccessCase(TestCase):
         It should be possible to view the spellbook page if the user has the
         appropriate token for that spellbook
         """
-        for route in self.spellbook_detail_routes:
-            url = reverse(route, kwargs={'pk': self.spellbook.pk})
+        for route, *args in self.spellbook_detail_routes:
+            url = reverse(route, args=[self.spellbook.pk, *args])
             url += '?token=%s' % self.spellbook.token
             r = self.client.get(url, follow=True)
             self.assertEqual(r.status_code, 200)

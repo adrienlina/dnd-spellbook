@@ -1,10 +1,9 @@
-from django.http import HttpResponseRedirect
+from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404, render
 
 from spellbook.forms import SpellbookSlotsForm
 from spellbook.models import AVAILABLE_SLOTS_LEVELS, Spellbook, SpellSlotsLevel
-from spellbook.permissions import needs_login_or_token
-from tools.build_url import build_url
+from spellbook.permissions import needs_login_or_token, redirect_with_token
 
 
 @needs_login_or_token
@@ -25,12 +24,9 @@ def edit_spellbook_slots(request, pk):
                     },
                 )
 
-            return HttpResponseRedirect(
-                build_url('spellbook:spellbook-detail-view',
-                          args=[pk],
-                          get=request.GET,  # pass token if necessary
-                          ),
-            )
+            return redirect_with_token(request,
+                                       'spellbook:spellbook-detail-view',
+                                       pk)
 
     slots = [{
         'level': slot_level,
@@ -44,6 +40,33 @@ def edit_spellbook_slots(request, pk):
     }
 
     return render(request, 'spellbook/spellbook_edit_slots.html', context)
+
+
+@needs_login_or_token
+def use_spellbook_slot(request, pk, slot_level):
+    """Use one spell slot of a spellbook"""
+    spellbook = get_object_or_404(Spellbook, pk=pk)
+
+    spell_slot = spellbook.slots.get(level=slot_level)
+    try:
+        spell_slot.use_slot()
+    except ValidationError:
+        pass
+
+    return redirect_with_token(request, 'spellbook:spellbook-detail-view', pk)
+
+
+@needs_login_or_token
+def reset_spellbook_slots(request, pk, slot_level=None):
+    """Reset the slots of a spellbook"""
+    spellbook = get_object_or_404(Spellbook, pk=pk)
+
+    if slot_level:
+        spellbook.slots.get(level=slot_level).reset_slots()
+    else:
+        spellbook.reset_slots()
+
+    return redirect_with_token(request, 'spellbook:spellbook-detail-view', pk)
 
 
 def _get_default_slot_value(spellbook, level):

@@ -27,6 +27,7 @@
     </div>
     <a href="{% spellbook_url 'spellbook:spellbook-detail' spellbook %}" type="button" class="btn btn-info">Edit spells</a>
     <a href="{% spellbook_url 'spellbook:spellbook-edit-slots' spellbook %}" type="button" class="btn btn-info">Edit slots</a>
+    <a href="{% spellbook_url 'spellbook:spellbook-reset-slots' spellbook %}" type="button" class="btn btn-primary">Reset all slots</a>
     <div class="row">
       {% for spell_level, level in spells_by_level.items %}
         <div class="col-sm-3 spell-level-column">
@@ -36,15 +37,30 @@
                 <h4 class="spellbook-detail__spell-level-title">Cantrips</h4>
               </div>
             {% else %}
-              <div class="col-xs-6">
+              <div class="col-xs-4">
                 <h4 class="spellbook-detail__spell-level-title">Level {{ spell_level }}</h4>
               </div>
-              <div class="col-xs-6">
-                <div class="well">
-                  Slots:
-                  {{ level.slot.current_capacity |default:'0' }} / {{ level.slot.max_capacity |default:'0' }}
+              <div class="col-xs-8">
+                <div class="well flex-container">
+                    Slots:
+                    <strong class="flex-center">
+                      {{ level.slot.current_capacity |default:'0' }} / {{ level.slot.max_capacity |default:'0' }}
+                    </strong>
+                    {% if level.slot.current_capacity %}
+                      <a href="{% spellbook_url 'spellbook:spellbook-use-slot' spellbook spell_level %}" title="Use slot">
+                        <span class="glyphicon glyphicon-fire"></span>
+                      </a>
+                    {% else %}
+                      <span title="No slots left">
+                        <span class="glyphicon glyphicon-fire"></span>
+                      </span>
+                    {% endif %}
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <a href="{% spellbook_url 'spellbook:spellbook-reset-slots' spellbook spell_level %}" title="Reset these slots">
+                      <span class="glyphicon glyphicon-refresh"></span>
+                    </a>
+                  </div>
                 </div>
-              </div>
             {% endif %}
           </div>
           <div class="row">
