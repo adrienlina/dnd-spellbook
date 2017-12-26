@@ -1,4 +1,5 @@
 {% comment %}
+  This uses ListJS and will not work with a direct Django include
   Required variables:
   - spellbook
   - spell
@@ -8,6 +9,6 @@
 
 <form method="POST" action="{% spellbook_url 'spellbook:spellbook-add-spell' spellbook %}">
   {% csrf_token %}
-  <input type="hidden" name="spell_pk" value={{ spell.pk }} />
+  <input type="hidden" class="pk" name="spell_pk" value=0 />
   <button type="submit" class="btn btn-info" title="Add spell to spellbook">+</button>
 </form>

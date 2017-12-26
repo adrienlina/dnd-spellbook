@@ -16,9 +16,11 @@
       <h1>Spells <a href="{% url 'spellbook:spellbook-list' %}" class="btn btn-info pull-right">Save them in a spellbook!</a></h1>
     </div>
 
-    <div class="overflow-y-scroll" style="max-height: calc(100% - 70px)">
-      {% include "spellbook/widgets/spell_list.html" with spells=object_list %}
-    </div>
+    {% include 'spellbook/widgets/spell_list_with_search.html' %}
   </div>
 </div>
 {% endblock container %}
+
+{% block scripts %}
+  {% include 'spellbook/widgets/spell_list_with_search_scripts.html' %}
+{% endblock %}

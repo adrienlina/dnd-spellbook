@@ -1,0 +1,47 @@
+{% comment %}
+  This widget works with the html in 'spell_list_with_search.html'
+  Possible variables:
+  - actions: a list of templates to include in the table
+  - spellbook: the spellbook being displayed, if any
+{% endcomment %}
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script>
+  var options = {
+    valueNames: [
+      'name',
+      'level',
+      'cast_type',
+      'spell_range',
+      'description',
+      { name: 'pk', attr: 'value'}
+    ],
+    item: `
+    <tr>
+     <td><strong class="name"></strong></td>
+     <td class="level"></td>
+     <td class="cast_type"></td>
+     <td class="spell_range"></td>
+     <td><div class="spell-description description"></div></td>
+     {% for action in actions %}
+       <td>
+         {% include action with spellbook=spellbook %}
+       </td>
+     {% endfor %}
+    </tr>
+    `.trim(),
+  };
+
+  {% if spellbook %}
+    var url = "{% url 'spellbook:json-spell-list' spellbook.pk %}";
+  {% else %}
+    var url = "{% url 'spellbook:json-spell-list' %}";
+  {% endif %}
+  $.get(url, function(data) {
+    var spells = data.map(function(spell) {
+      spell.fields['pk'] = spell.pk;
+      return spell.fields;
+    });
+    var spellList = new List('spell-list', options, spells);
+  });
+</script>

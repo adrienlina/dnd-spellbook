@@ -16,10 +16,10 @@
   <div class="col-sm-12 height-full">
     <div class="row height-full">
       <div class="col-md-6 height-full">
-        <div class="well max-height-full display-flex-column" style="background-color: rgb(220, 220, 220)">
+        <div class="well height-full display-flex-column" style="background-color: rgb(220, 220, 220)">
           <h4>List of all spells</h4>
-          <div class="overflow-y-scroll">
-            {% include "spellbook/widgets/spell_list.html" with spells=spells spellbook=spellbook actions=other_spell_actions %}
+          <div class="height-full">
+            {% include 'spellbook/widgets/spell_list_with_search.html' with actions=other_spell_actions %}
           </div>
         </div>
       </div>
@@ -33,12 +33,6 @@
               </a>
             </div>
           </div>
-          <div class="small">
-            Share link:
-            <a href="{% absolute_url 'spellbook:spellbook-edit-spells' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
-              {% absolute_url 'spellbook:spellbook-edit-spells' spellbook.pk %}?token={{spellbook.token}}
-            </a>
-          </div>
           <div class="overflow-y-scroll">
             {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells_with_preparations spellbook=spellbook actions=spellbook_spell_actions %}
           </div>
@@ -48,3 +42,7 @@
   </div>
 </div>
 {% endblock container %}
+
+{% block scripts %}
+  {% include 'spellbook/widgets/spell_list_with_search_scripts.html' with actions=other_spell_actions spellbook=spellbook %}
+{% endblock %}

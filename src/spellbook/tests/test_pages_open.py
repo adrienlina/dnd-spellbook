@@ -10,6 +10,7 @@ class SpellbookPagesOpenCase(TestCase):
     # Pages that should always open
     public_url_names = [
         'spellbook:spell-list',
+        'spellbook:json-spell-list',
         'spellbook:spellbook-home',
         'spellbook:spellbook-list',
     ]

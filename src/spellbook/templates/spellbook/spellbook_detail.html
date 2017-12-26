@@ -25,10 +25,10 @@
         {% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}
       </a>
     </div>
-    <a href="{% spellbook_url 'spellbook:spellbook-edit-spells' spellbook %}" type="button" class="btn btn-info">Edit spells</a>
-    <a href="{% spellbook_url 'spellbook:spellbook-edit-slots' spellbook %}" type="button" class="btn btn-info">Edit slots</a>
-    <a href="{% spellbook_url 'spellbook:spellbook-rename' spellbook %}" type="button" class="btn btn-info">Rename</a>
-    <a href="{% spellbook_url 'spellbook:spellbook-reset-slots' spellbook %}" type="button" class="btn btn-primary">Reset all slots</a>
+    <a href="{% spellbook_url 'spellbook:spellbook-edit-spells' spellbook %}" type="button" class="btn">Edit spells</a>
+    <a href="{% spellbook_url 'spellbook:spellbook-edit-slots' spellbook %}" type="button" class="btn">Edit slots</a>
+    <a href="{% spellbook_url 'spellbook:spellbook-rename' spellbook %}" type="button" class="btn">Rename</a>
+    <a href="{% spellbook_url 'spellbook:spellbook-reset-slots' spellbook %}" type="button" class="btn btn-info">Reset all slots</a>
     <div class="row">
       {% for spell_level, level in spells_by_level.items %}
         <div class="col-sm-3 spell-level-column">
