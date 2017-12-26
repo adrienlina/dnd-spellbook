@@ -18,20 +18,27 @@
 {% block container %}
 <div class="no-scroll-content">
   <div class="col-sm-12 height-full">
-    <h3>Spellbook {{ spellbook.name }}: spells available</h3>
-    <div class="small">
-      Share link:
-      <a href="{% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
-        {% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}
-      </a>
+    <h3>
+      Spellbook <em>{{ spellbook.name }}</em>
+      &nbsp; &nbsp; &nbsp;
+      <span class="small">
+        Share link:
+        <a href="{% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
+          {% absolute_url 'spellbook:spellbook-detail' spellbook.pk %}?token={{spellbook.token}}
+        </a>
+      </span>
+    </h3>
+    <div class="row">
+      <div class="col-sm-12">
+        <a href="{% spellbook_url 'spellbook:spellbook-edit-spells' spellbook %}" type="button" class="btn">Edit spells</a>
+        <a href="{% spellbook_url 'spellbook:spellbook-edit-slots' spellbook %}" type="button" class="btn">Edit slots</a>
+        <a href="{% spellbook_url 'spellbook:spellbook-rename' spellbook %}" type="button" class="btn">Rename</a>
+        <a href="{% spellbook_url 'spellbook:spellbook-reset-slots' spellbook %}" type="button" class="btn btn-info">Reset all slots</a>
+      </div>
     </div>
-    <a href="{% spellbook_url 'spellbook:spellbook-edit-spells' spellbook %}" type="button" class="btn">Edit spells</a>
-    <a href="{% spellbook_url 'spellbook:spellbook-edit-slots' spellbook %}" type="button" class="btn">Edit slots</a>
-    <a href="{% spellbook_url 'spellbook:spellbook-rename' spellbook %}" type="button" class="btn">Rename</a>
-    <a href="{% spellbook_url 'spellbook:spellbook-reset-slots' spellbook %}" type="button" class="btn btn-info">Reset all slots</a>
     <div class="row">
       {% for spell_level, level in spells_by_level.items %}
-        <div class="col-sm-3 spell-level-column">
+        <div class="col-sm-3">
           <div class="row">
             {% if spell_level == 0 %}
               <div class="col-xs-12">
@@ -65,25 +72,27 @@
             {% endif %}
           </div>
           <div class="row">
-            {% for spell in level.spells %}
-              <div class="col-sm-12 well">
-                <h4>
-                  {{ spell.name }} ({{ spell.level_as_dnd_format }})
-                  {% if spell.is_prepared %}
-                    <span class="pull-right glyphicon glyphicon-ok-circle" title="Spell prepared"></span>
-                  {% endif %}
-                </h4>
-                <div class="row">
-                  <div class="col-xs-6">
-                    Type: {{ spell.cast_type }}
+            <div class="col-sm-12">
+              {% for spell in level.spells %}
+                <div class="col-sm-12 well">
+                  <h4>
+                    {{ spell.name }} ({{ spell.level_as_dnd_format }})
+                    {% if spell.is_prepared or not spell.level %}
+                      <span class="pull-right glyphicon glyphicon-ok-circle" title="Spell prepared"></span>
+                    {% endif %}
+                  </h4>
+                  <div class="row">
+                    <div class="col-xs-6">
+                      Type: {{ spell.cast_type }}
+                    </div>
+                    <div class="col-xs-6">
+                      Range: {{ spell.spell_range }}
+                    </div>
                   </div>
-                  <div class="col-xs-6">
-                    Range: {{ spell.spell_range }}
-                  </div>
+                  <p class="spell-description">{{ spell.description |safe }}</p>
                 </div>
-                <p class="spell-description">{{ spell.description |safe }}</p>
-              </div>
-            {% endfor %}
+              {% endfor %}
+            </div>
           </div>
         </div>
       {% endfor %}

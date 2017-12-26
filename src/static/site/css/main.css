@@ -234,14 +234,6 @@ body>.navbar-transparent {
   text-align: center;
 }
 
-.spell-level-column {
-  margin-right: 12px;
-}
-
-.spell-level-column:last-child {
-  margin-right: 0px;
-}
-
 .slot-level__container {
   padding: 5px;
 }
