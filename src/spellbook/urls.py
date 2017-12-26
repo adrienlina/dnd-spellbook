@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.urls import path
 
-from spellbook.views.spell import SpellListView
+from spellbook.views.spell import SpellListView, spell_list_json
 from spellbook.views.spellbook import (SpellbookListView, create_spellbook, rename_spellbook,
                                        spellbook_detail_view, spellbook_modify_spells_view)
 from spellbook.views.spellbook_and_slots import (edit_spellbook_slots, reset_spellbook_slots,
@@ -16,6 +16,7 @@ app_name = "spellbook"
 urlpatterns = [
     url(r'^home$', SpellListView.as_view(), name='spellbook-home'),
     url(r'^spells$', SpellListView.as_view(), name='spell-list'),
+    url(r'^json/spells$', spell_list_json, name='json-spell-list'),
 
     # Spellbooks related
     url(r'^spellbooks/$',

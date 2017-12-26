@@ -8,6 +8,9 @@ body {
   overflow: hidden;
 }
 
+a.btn:not(.btn-primary):not(.btn-info):not(.btn-secondary) {
+  background-color: rgb(221, 221, 221);
+}
 .content {
   margin-top: 80px;
 }
@@ -246,4 +249,8 @@ body>.navbar-transparent {
 .spellbook-detail__spell-level-title {
   padding-top: 13px;
   padding-bottom: 27px;
+}
+
+.spell-table th, .spell-table td {
+  min-width: 50px;
 }

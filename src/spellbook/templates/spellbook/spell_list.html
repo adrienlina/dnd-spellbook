@@ -16,9 +16,55 @@
       <h1>Spells <a href="{% url 'spellbook:spellbook-list' %}" class="btn btn-info pull-right">Save them in a spellbook!</a></h1>
     </div>
 
-    <div class="overflow-y-scroll" style="max-height: calc(100% - 70px)">
-      {% include "spellbook/widgets/spell_list.html" with spells=object_list %}
+    <div class="height-full" style="max-height: calc(100% - 70px)" id="spell-list">
+      <input class="search" placeholder="Search" />
+      <button class="sort btn" data-sort="name">Sort by name</button>
+      <button class="sort btn" data-sort="level">Sort by level</button>
+      <button class="sort btn" data-sort="cast_type">Sort by cast type</button>
+      <button class="sort btn" data-sort="spell_range">Sort by range</button>
+      <table class="table table-striped height-full spell-table" style="display: block;">
+        <thead class="">
+          <tr>
+            <th>Spell Name</th>
+            <th>Level</th>
+            <th>Cast type</th>
+            <th>Range</th>
+            <th>Description</th>
+            {% for action in actions %}
+              <th></th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody class="overflow-y-scroll list" style="display: block; max-height: 80%">
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 {% endblock container %}
+
+{% block scripts %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+<script>
+  var options = {
+    valueNames: ['name', 'level', 'cast_type', 'spell_range', 'description'],
+    item: `
+    <tr>
+     <td><strong class="name"></strong></td>
+     <td class="level"></td>
+     <td class="cast_type"></td>
+     <td class="spell_range"></td>
+     <td><div class="spell-description description"></div></td>
+    </tr>
+    `.trim(),
+  };
+
+  $.get("{% url 'spellbook:json-spell-list' %}", function(data) {
+    var spells = _.map(data, function(spell) {
+      return spell.fields;
+    });
+    var spellList = new List('spell-list', options, spells);
+  });
+</script>
+{% endblock %}

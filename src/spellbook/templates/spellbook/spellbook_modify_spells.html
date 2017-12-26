@@ -33,12 +33,6 @@
               </a>
             </div>
           </div>
-          <div class="small">
-            Share link:
-            <a href="{% absolute_url 'spellbook:spellbook-edit-spells' spellbook.pk %}?token={{spellbook.token}}" target="_blank">
-              {% absolute_url 'spellbook:spellbook-edit-spells' spellbook.pk %}?token={{spellbook.token}}
-            </a>
-          </div>
           <div class="overflow-y-scroll">
             {% include "spellbook/widgets/spell_list.html" with spells=spellbook.spells_with_preparations spellbook=spellbook actions=spellbook_spell_actions %}
           </div>
