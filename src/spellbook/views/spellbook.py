@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from profiles.models import get_request_profile
 from spellbook.forms import SpellbookForm
 from spellbook.models import Spell, Spellbook
-from spellbook.permissions import needs_login, needs_login_or_token
+from spellbook.permissions import needs_login, needs_login_or_token, redirect_with_token
 
 
 class SpellbookListView(ListView):
@@ -80,7 +80,29 @@ def create_spellbook(request):
             spellbook.save()
 
             return redirect('spellbook:spellbook-edit-spells', spellbook.pk)
-    else:
-        form = SpellbookForm()
 
-        return render(request, 'spellbook/new_spellbook.html', {'form': form})
+    form = SpellbookForm()
+
+    return render(request, 'spellbook/new_spellbook.html', {'form': form})
+
+
+@needs_login_or_token
+def rename_spellbook(request, pk):
+    """Show a form to rename a spellbook"""
+    spellbook = get_object_or_404(Spellbook, pk=pk)
+
+    form = (SpellbookForm(request.POST, instance=spellbook)
+            if request.method == 'POST'
+            else SpellbookForm(instance=spellbook))
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+            return redirect_with_token(request, 'spellbook:spellbook-detail', spellbook.pk)
+
+    context = {
+        'form': form,
+        'spellbook': spellbook,
+    }
+    return render(request, 'spellbook/new_spellbook.html', context)

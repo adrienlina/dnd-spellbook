@@ -12,7 +12,13 @@
 {% block container %}
 <div class="no-scroll-content">
   <div class="container">
-    <h1>New spellbook</h1>
+    <h1>
+      {% if spellbook %}
+        Rename <em>{{ spellbook.name }}</em>
+      {% else %}
+        New spellbook
+      {% endif %}
+    </h1>
 
     <form action="" method="post">
       {% csrf_token %}
