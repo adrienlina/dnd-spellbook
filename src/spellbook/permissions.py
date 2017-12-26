@@ -1,7 +1,8 @@
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect
 
 from profiles.models import get_request_profile
+from tools.build_url import build_url
 
 from .models import Spellbook
 
@@ -32,3 +33,14 @@ def needs_login_or_token(func):
         return func(request, pk, *args, **kwargs)
 
     return redirect_if_not_profile_or_token
+
+
+def redirect_with_token(request, route, *args, **kwargs):
+    """Redirect to a route with the token if it was given in the request"""
+    return HttpResponseRedirect(
+        build_url(route,
+                  args=args,
+                  kwargs=kwargs,
+                  get=request.GET,  # pass token if necessary
+                  ),
+    )

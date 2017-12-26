@@ -222,10 +222,28 @@ body>.navbar-transparent {
   overflow-y: scroll;
 }
 
+.flex-container {
+  display: flex;
+}
+
+.flex-center {
+  flex: 1;
+  text-align: center;
+}
+
 .spell-level-column {
   margin-right: 12px;
 }
 
 .spell-level-column:last-child {
   margin-right: 0px;
+}
+
+.slot-level__container {
+  padding: 5px;
+}
+
+.spellbook-detail__spell-level-title {
+  padding-top: 13px;
+  padding-bottom: 27px;
 }

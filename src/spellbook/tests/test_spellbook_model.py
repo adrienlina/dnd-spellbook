@@ -35,6 +35,16 @@ class SpellbookModelCase(TestCase):
         )
         self.assertTrue(bool(spellbook.token))  # Token should not be empty
 
+        # A spellbook should have a spell slot level 1 by default
+        self.assertEqual(
+            spellbook.slots.count(),
+            1,
+        )
+        self.assertEqual(
+            spellbook.slot_level(1).max_capacity,
+            2,
+        )
+
     def test_1_add_spell(self):
         """It should be possible to add and remove a spell to a spellbook"""
 

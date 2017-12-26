@@ -27,8 +27,14 @@ def spellbook_detail_view(request, pk):
     spells_by_level = {}
     for spell in spellbook.spells_with_preparations:
         if spell.level not in spells_by_level:
-            spells_by_level[spell.level] = []
-        spells_by_level[spell.level].append(spell)
+            spells_by_level[spell.level] = {
+                'level': spell.level,
+                'level_as_dnd_format': spell.level_as_dnd_format,
+                'slot': spellbook.slot_level(spell.level),
+                'spells': [],
+            }
+
+        spells_by_level[spell.level]['spells'].append(spell)
 
     context = {
         'spellbook': spellbook,

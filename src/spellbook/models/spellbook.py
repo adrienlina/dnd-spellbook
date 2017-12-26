@@ -46,6 +46,17 @@ class Spellbook(models.Model):
 
         return spells_with_preparations
 
+    def slot_level(self, level):
+        """Return the spell slot of a given level"""
+        try:
+            return self.slots.get(level=level)
+        except models.ObjectDoesNotExist:
+            return None
+
+    def reset_slots(self):
+        """Reset all available slots capacity to their maximum"""
+        self.slots.all().update(current_capacity=models.F('max_capacity'))
+
 
 class SpellUsage(models.Model):
     """Link between a spell and a spellbook that defines if it is prepared"""

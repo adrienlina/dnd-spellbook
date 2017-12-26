@@ -7,9 +7,9 @@ register = template.Library()
 
 
 @register.simple_tag(takes_context=True)
-def spellbook_url(context, route, spellbook):
+def spellbook_url(context, route, spellbook, *args):
     """The url for a spellbook page, to which we add a token if necessary"""
-    url = reverse(route, args=[spellbook.pk])
+    url = reverse(route, args=[spellbook.pk, *args])
     user_profile = get_request_profile(context.request)
 
     return (
