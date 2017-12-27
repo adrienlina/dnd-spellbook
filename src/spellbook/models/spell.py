@@ -33,6 +33,45 @@ class Spell(models.Model):
         verbose_name="Description",
     )
 
+    """The school the spell belongs to"""
+    school = models.TextField(
+        verbose_name="School",
+        max_length=20,
+    )
+
+    """The duration of the spell"""
+    duration = models.TextField(
+        verbose_name="Spell Duration",
+        max_length=50,
+    )
+
+    """Source page where the spell is listed"""
+    page = models.CharField(
+        verbose_name="Page (Source)",
+        max_length=50,
+    )
+
+    """Whether the spell requires concentration"""
+    concentration = models.BooleanField()
+
+    """Whether the spell requires a ritual"""
+    ritual = models.BooleanField()
+
+    """
+    Components required to cast the spell
+    V = verbal, S = somatic (movement), M = material
+    """
+    components = models.CharField(
+        verbose_name="Components",
+        max_length=10,
+    )
+
+    """Material components needed, if any"""
+    material_component = models.TextField(
+        blank=True,
+        default=""
+    )
+
     @property
     def level_as_dnd_format(self):
         if self.level == 0:
