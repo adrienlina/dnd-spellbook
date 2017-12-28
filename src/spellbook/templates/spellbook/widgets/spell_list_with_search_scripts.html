@@ -11,23 +11,33 @@
     valueNames: [
       'name',
       'level',
+      'dnd_level',
       'cast_type',
       'spell_range',
+      'ritual-concentration',
+      'duration',
       'description',
-      { name: 'pk', attr: 'value'}
+      'school',
+      { name: 'pk', attr: 'value'},
+      { name: '_pk', attr: 'data-pk'},
     ],
     item: `
     <tr>
-     <td><strong class="name"></strong></td>
-     <td class="level"></td>
-     <td class="cast_type"></td>
-     <td class="spell_range"></td>
-     <td><div class="spell-description description"></div></td>
-     {% for action in actions %}
-       <td>
-         {% include action with spellbook=spellbook %}
-       </td>
-     {% endfor %}
+      <td class="spell-onclick-detail">
+        <strong class="name"></strong>
+        <span class="_pk"></span>
+      </td>
+      <td class="spell-onclick-detail dnd_level"></td>
+      <td class="spell-onclick-detail ritual-concentration"></td>
+      <td class="spell-onclick-detail cast_type"></td>
+      <td class="spell-onclick-detail duration"></td>
+      <td class="spell-onclick-detail spell_range"></td>
+      <td class="spell-onclick-detail school"></td>
+      {% for action in actions %}
+      <td>
+        {% include action with spellbook=spellbook %}
+      </td>
+      {% endfor %}
     </tr>
     `.trim(),
   };
@@ -37,11 +47,41 @@
   {% else %}
     var url = "{% url 'spellbook:json-spell-list' %}";
   {% endif %}
+
   $.get(url, function(data) {
     var spells = data.map(function(spell) {
-      spell.fields['pk'] = spell.pk;
+      spell.fields.pk = spell.pk;
+      spell.fields._pk = spell.pk;
+
+      spell.fields['ritual-concentration'] = '';
+      if (spell.fields.ritual) {
+        spell.fields['ritual-concentration'] += '<span class="glyphicon glyphicon-grain" title="Ritual"></span>';
+      }
+      if (spell.fields.concentration) {
+        spell.fields['ritual-concentration'] += '<span class="glyphicon glyphicon-dashboard" title="Concentration"></span>';
+      }
+
+      if (spell.fields.level == 0) {
+        spell.fields.dnd_level = 'Cantrip';
+      } else if (spell.fields.level == 1) {
+        spell.fields.dnd_level = '1st';
+      } else if (spell.fields.level == 2) {
+        spell.fields.dnd_level = '2nd';
+      } else if (spell.fields.level == 3) {
+        spell.fields.dnd_level = '3rd';
+      } else {
+        spell.fields.dnd_level = spell.fields.level + 'th';
+      }
+
       return spell.fields;
     });
     var spellList = new List('spell-list', options, spells);
+
+    $('.spell-onclick-detail').unbind().click(function(event) {
+      var elem = $(this);
+      var parent = $(elem[0].parentNode);
+      var pk = parent.find('span._pk').attr('data-pk');
+      window.open("/spells/" + pk, '_blank');
+    });
   });
 </script>

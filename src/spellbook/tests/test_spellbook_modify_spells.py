@@ -4,6 +4,8 @@ from django.urls import reverse
 
 from spellbook.models import Spell, Spellbook
 
+from .test_spell_model import TEST_SPELL_EXAMPLE_FIELDS
+
 User = get_user_model()
 
 
@@ -30,17 +32,11 @@ class SpellbookDetailsCase(TestCase):
         cls.spells = [
             Spell(
                 name="spell_0_name",
-                level=0,
-                cast_type="cast_type",
-                spell_range="spell_range",
-                description="description",
+                **TEST_SPELL_EXAMPLE_FIELDS,
             ),
             Spell(
                 name="spell_1_name",
-                level=0,
-                cast_type="cast_type",
-                spell_range="spell_range",
-                description="description",
+                **TEST_SPELL_EXAMPLE_FIELDS,
             ),
         ]
         for spell in cls.spells:

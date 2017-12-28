@@ -12,26 +12,32 @@
     <button class="sort btn" data-sort="name"><span class="glyphicon glyphicon-arrow-up"></span> name</button>
     <button class="sort btn" data-sort="level"><span class="glyphicon glyphicon-arrow-up"></span> level</button>
     <button class="sort btn" data-sort="cast_type"><span class="glyphicon glyphicon-arrow-up"></span> cast type</button>
+    <button class="sort btn" data-sort="duration"><span class="glyphicon glyphicon-arrow-up"></span> duration</button>
     <button class="sort btn" data-sort="spell_range"><span class="glyphicon glyphicon-arrow-up"></span> range</button>
+    <button class="sort btn" data-sort="school"><span class="glyphicon glyphicon-arrow-up"></span> School</button>
   </div>
-  <table class="table table-striped height-full spell-table" style="display: block;">
-    <thead class="">
-      <tr>
-        <th>Spell Name</th>
-        <th>Level</th>
-        <th>Cast type</th>
-        <th>Range</th>
-        <th>Description</th>
-        {% for action in actions %}
-          <th></th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody class="overflow-y-scroll list" style="display: block; max-height: 80%">
-      {% comment %}
-        ListJS will insert the spells here. See http://listjs.com/ and
-        'spell_list_with_search_scripts.html'
-      {% endcomment %}
-    </tbody>
-  </table>
+  <div class="overflow-y-scroll" style="max-height: calc(90% - 38px); margin-top: 10px;">
+    <table class="table table-striped spell-table">
+      <thead>
+        <tr>
+          <th>Spell Name</th>
+          <th>Level</th>
+          <th title="Ritual / Concentration">Rit. /<br />Conc.</th>
+          <th>Cast type</th>
+          <th>Duration</th>
+          <th>Range</th>
+          <th>School</th>
+          {% for action in actions %}
+            <th></th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody class="list">
+        {% comment %}
+          ListJS will insert the spells here. See http://listjs.com/ and
+          'spell_list_with_search_scripts.html'
+        {% endcomment %}
+      </tbody>
+    </table>
+  </div>
 </div>

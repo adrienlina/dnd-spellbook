@@ -243,6 +243,10 @@ body>.navbar-transparent {
   padding-bottom: 27px;
 }
 
-.spell-table th, .spell-table td {
-  min-width: 50px;
+.spell-table thead {
+  background-color: rgb(235, 235, 235);
+}
+
+.small-column {
+  max-width: 20%;
 }

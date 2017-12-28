@@ -1,296 +1,502 @@
 - fields:
     cast_type: 1 action
-    description: 'You choose two creatures within range that are
-      within 5 feet of each other. A target must succeed on a Dexterity saving throw
-      or take 1d6 acid damage.<br> This spells damage increases by 1d6 when you reach
-      5th Level (2d6), 11th level (3d6) and 17th level (4d6). '
+    components: VS
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: Instantaneous
     level: 0
     name: Acid Splash
+    page: phb 211
+    ritual: false
+    school: Conjuration
     spell_range: 60 feet
   model: spellbook.spell
   pk: 0
 - fields:
     cast_type: 1 action
-    description: You extend your hand and trace a sigil of warding in the air. Until
-      the end of your next turn, you have resistance against bludgeoning, piercing,
-      and slashing damage dealt by weapon attacks.
+    components: VS
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 1 round
     level: 0
     name: Blade Ward
+    page: phb 218
+    ritual: false
+    school: Abjuration
     spell_range: Self
+
   model: spellbook.spell
   pk: 1
 - fields:
     cast_type: 1 action
-    description: (a weapon)As part of the action used to cast this spell, you must
-      make a melee attack with a weapon against one creature within the spell's range,
-      otherwise the spell fails. On a hit, the target suffers the attack's normal
-      effects, and it becomes sheathed in booming energy until the start of your next
-      turn. If the target willingly moves before then, it immediately takes 1d8 thunder
-      damage, and the spell ends.<br> This spell's damage increases when you reach
-      higher levels. At 5th level, the melee attack deals an extra 1d8 thunder damage
-      to the target, and the damage the target takes for moving increases to 2d8.
-      Both damage rolls increase by 1d8 at 11th level and 17th level.
+    components: VS
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 1 round
     level: 0
-    name: Booming Blade
-    spell_range: 5 feet
+    name: Chill Touch
+    page: phb 221
+    ritual: false
+    school: Necromancy
+    spell_range: 120 feet
   model: spellbook.spell
   pk: 2
 - fields:
-    cast_type: 1 action
-    description: 'You create a ghostly, skeletal hand in the space of a creature within
-      range. Make a ranged spell attack against the creature to assail it with the
-      chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can''t
-      regain hit points until the start of your next turn. Until then, the hand clings
-      to the target.<br> If you hit an undead target, it also has disadvantage on
-      attack rolls against you until the end of your next turn.<br> This spell''s
-      damage increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and
-      17th level (4d8). '
-    level: 0
-    name: Chill Touch
-    spell_range: 120 feet
+    cast_type: 1 minute
+    components: VSMgp
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 1 hour
+    level: 3
+    name: Magic Circle
+    page: phb 256
+    ritual: false
+    school: Abjuration
+    spell_range: 10 feet
   model: spellbook.spell
   pk: 3
 - fields:
     cast_type: 1 action
-    description: "You choose nonmagical flame that you can see within range and that\
-      \ fits within a 5-foot cube. You affect it in one of the following ways:<br>\
-      \ \u2022 You instantaneously expand the flame 5 feet in one direction, provided\
-      \ that wood or other fuel is present in the new location.<br> \u2022 You instantaneously\
-      \ extinguish the flames within the cube.<br> \u2022 You double or halve the\
-      \ area of bright light and dim light cast by the flame, change its color, or\
-      \ both . The change lasts for 1 hour.<br> \u2022 You cause simple shapes-such\
-      \ as the vague form of a creature, an inanimate object, or a location- to appear\
-      \ within the flames and animate as you like. The shapes last for 1 hour.<br>\
-      \ If you cast this spell multiple times, you can have up to three non-instantaneous\
-      \ effects created by it active at a time, and you can dismiss such an effect\
-      \ as an action."
-    level: 0
-    name: Control Flames
-    spell_range: 60 feet
+    components: VS
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: Instantaneous
+    level: 1
+    name: Chaos Bolt
+    page: xge 151
+    ritual: false
+    school: Evocation
+    spell_range: 120 feet
   model: spellbook.spell
   pk: 4
 - fields:
     cast_type: 1 action
-    description: You create a bonfire on ground that you can see within range. Until
-      the spells ends, the magic bonfire fills a 5-foot cube. Any creature in the
-      bonfire's space when you cast the spell must succeed on a Dexterity saving throw
-      or take 1d8 fire damage. A creature must also make the saving throw when it
-      enters the bonfire's space for the first time on a turn or ends its turn there.<br>
-      The bonfire ignites flammable objects in its area that aren't being worn or
-      carried.<br> The spell's damage increases by 1d8 when you reach 5th level (2d8),
-      11th level (3d8), and 17th level (4d8).
+    components: VS
+    concentration: true
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 1 minute
     level: 0
     name: Create Bonfire
+    page: ee 16, xge 152
+    ritual: false
+    school: Conjuration
     spell_range: 60 feet
   model: spellbook.spell
   pk: 5
 - fields:
     cast_type: 1 action
-    description: 'You create up to four torch-sized lights within range, making them
-      appear as torches, lanterns, or glowing orbs that hover in the air for the duration.
-      You can also combine the four lights into one glowing vaguely humanoid form
-      of Medium size. Whichever form you choose, each light sheds dim light in a 10-foot
-      radius.<br> As a bonus action on your turn, you can move the lights up to 60
-      feet to a new spot within range. A light must be within 20 feet of another light
-      created by this spell, and a light winks out if it exceeds the spell''s range. '
-    level: 0
-    name: Dancing Lights
-    spell_range: 120 feet
+    components: SM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+
+    duration: Instantaneous
+    level: 1
+    name: Ice Knife
+    page: ee 19, xge 157
+    ritual: false
+    school: Conjuration
+    spell_range: 60 feet
   model: spellbook.spell
   pk: 6
 - fields:
     cast_type: 1 action
-    description: 'You hurl a mote of fire at a creature or object within range. Make
-      a ranged spell attack against the target. On a hit, the target takes 1d10 fire
-      damage. A flammable object hit by this spell ignites if it isn''t being worn
-      or carried.<br> This spell''s damage increases by 1d10 when you reach 5th level
-      (2d10), 11th level (3d10), and 17th level (4d10). '
+    components: VS
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: Instantaneous
     level: 0
     name: Fire Bolt
+    page: phb 242
+    ritual: false
+    school: Evocation
     spell_range: 120 feet
   model: spellbook.spell
   pk: 7
 - fields:
     cast_type: 1 action
-    description: For the duration, you have advantage on all Charisma checks directed
-      at one creature of your choice that isn't hostile toward you. When the spell
-      ends, the creature realizes that you used magic to influence its mood and becomes
-      hostile toward you. A creature prone to violence might attack you. Another creature
-      might seek retribution in other ways (at the DM's discretion), depending on
-      the nature of your interaction with it.
+    components: SM
+    concentration: true
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: up to 1 minute
     level: 0
     name: Friends
+    page: phb 244
+    ritual: false
+    school: Enchantment
     spell_range: Self
   model: spellbook.spell
   pk: 8
 - fields:
     cast_type: 1 action
-    description: You cause numbing frost to form on one creature that you can see
-      within range. The target must make a Constitution saving throw. On a failed
-      save, the target takes 1d6 cold damage, and it has disadvantage on the next
-      weapon attack roll it makes before the end of its next turn.<br> The spell's
-      damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and
-      17th level (4d6).
-    level: 0
-    name: Frostbite
-    spell_range: 60 feet
+    components: VSM
+    concentration: true
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+    duration: up to 1 hour
+    level: 3
+    name: Gaseous Form
+    page: phb 244
+    ritual: false
+    school: Transmutation
+    spell_range: Touch
   model: spellbook.spell
   pk: 9
 - fields:
     cast_type: 1 action
-    description: (a weapon)As part of the action used to cast this spell, you must
-      make a melee attack with a weapon against one creature within the spell's range,
-      otherwise the spell fails. On a hit, the target suffers the attack's normal
-      effects, and green fire leaps from the target to a different creature of your
-      choice that you can see within 5 feet of it. The second creature takes fire
-      damage equal to your spellcasting ability modifier.<br> This spell's damage
-      increases when you reach higher levels. At 5th level, the melee attack deals
-      an extra 1d8 fire damage to the target, and the fire damage to the second creature
-      increases to 1d8 + your spellcasting ability modifier. Both damage rolls increase
-      by 1d8 at 11th level and 17th level.
-    level: 0
-    name: Green-Flame Blade
-    spell_range: 5 feet
+    components: VSM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 10 days
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+    level: 2
+    name: Gentle Repose
+    page: phb 245
+    ritual: true
+    school: Necromancy
+    spell_range: Touch
   model: spellbook.spell
   pk: 10
 - fields:
     cast_type: 1 action
-    description: "You seize the air and compel it to create one of the following effects\
-      \ at a point you can see within spell_range:<br> \u2022 One Medium or smaller creature\
-      \ that you choose must succeed on a Strength saving throw or be pushed up to\
-      \ 5 feet away from you.<br> \u2022 You create a small blast of air capable of\
-      \ moving one object that is neither held nor carried and that weighs no more\
-      \ than 5 pounds. The object is pushed up to 10 feet away from you. It isn't\
-      \ pushed with enough force to cause damage.<br> \u2022 You create a harm less\
-      \ sensory effect using air, such as causing leaves to rustle, wind to slam shutters\
-      \ closed, or your clothing to ripple in a breeze."
-    level: 0
-    name: Gust
-    spell_range: 30 feet
+    components: VSM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 1 minute
+    level: 1
+    name: Grease
+    page: phb 246
+    ritual: false
+    school: Conjuration
+    spell_range: 60 feet
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
   model: spellbook.spell
   pk: 11
 - fields:
     cast_type: 1 action
-    description: '(a living flea)You cause a cloud of mites, fleas, and other parasites
-      to appear momentarily on one creature you can see within range. The target must
-      succeed on a Constitution saving throw, or it takes 1d6 poison damage and moves
-      5 feet in a random direction if it can move and its speed is at least 5 feet.
-      Roll a d4 for the direction: 1, north: 2, south: 3, east: or 4, west. This movement
-      doesn''t provoke opportunity attacks, and if the direction rolled is blocked,
-      the target doesn''t move.<br> The spell''s damage increases by 1d6 when you
-      reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).'
-    level: 0
-    name: Infestation
-    spell_range: 30 feet
+    components: V
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: Instantaneous
+    level: 3
+    name: Thunder Step
+    page: xge 168
+    ritual: false
+    school: Conjuration
+    spell_range: 90 feet
   model: spellbook.spell
   pk: 12
 - fields:
     cast_type: 1 action
-    description: '(a firefly or phosphorescent moss)You touch one object that is no
-      larger than 10 feet in any dimension. Until the spell ends, the object sheds
-      bright light in a 20-foot radius and dim light for an additional 20 feet. The
-      light can be colored as you like. Completely covering the object with something
-      opaque blocks the light. The spell ends if you cast it again or dismiss it as
-      an action.<br> If you target an object held or worn by a hostile creature, that
-      creature must succeed on a Dexterity saving throw to avoid the spell. '
+    components: VM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+    duration: 1 hour
     level: 0
     name: Light
+    page: phb 255
+    ritual: false
+    school: Evocation
     spell_range: Touch
   model: spellbook.spell
   pk: 13
 - fields:
     cast_type: 1 action
-    description: You create a lash of lightning energy that strikes at one creature
-      of your choice that you can see within range. The target must succeed on a Strength
-      saving throw or be pulled up to 10 feet in a straight line toward you and then
-      take 1d8 lightning damage if it is within 5 feet of you.<br> The spell's damage
-      increases by 1d8 when you reach 5th level (2d8), 11th level (3d8), and 17th
-      level (4d8).
+    components: VM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+    duration: Instantaneous
     level: 0
-    name: Lightning Lure
-    spell_range: 15 feet
+    name: Word of Radiance
+    page: xge 171
+    ritual: false
+    school: Evocation
+    spell_range: 5 feet
   model: spellbook.spell
   pk: 14
 - fields:
     cast_type: 1 action
-    description: 'A spectral, floating hand appears at a point you choose within range.
-      The hand lasts for the duration or until you dismiss it as an action. The hand
-      vanishes if it is ever more than 30 feet away from you or if you cast this spell
-      again.<br> You can use your action to control the hand. You can use the hand
-      to manipulate an object, open an unlocked door or container, stow or retrieve
-      an item from an open container, or pour the contents out of a vial. You can
-      move the hand up to 30 feet each time you use it.<br> The hand can''t attack,
-      activate magical items, or carry more than 10 pounds. '
+    components: VS
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 1 minute
     level: 0
     name: Mage Hand
+    page: phb 256
+    ritual: false
+    school: Conjuration
     spell_range: 30 feet
   model: spellbook.spell
   pk: 15
 - fields:
     cast_type: 1 minute
-    description: '(two lodestones)This spell repairs a single break or tear in an
-      object you touch, such as broken chain link, two halves of a broken key, a torn
-      clack, or a leaking wineskin. As long as the break or tear is no larger than
-      1 foot in any dimension, you mend it, leaving no trace of the former damage.<br>
-      This spell can physically repair a magic item or construct, but the spell can''t
-      restore magic to such an object. '
+    components: VSM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+    duration: Instantaneous
     level: 0
     name: Mending
+    page: phb 259
+    ritual: false
+    school: Transmutation
     spell_range: Touch
   model: spellbook.spell
   pk: 16
 - fields:
     cast_type: 1 action
-    description: '(a short piece of copper wire)You point your finger toward a creature
-      within range and whisper a message. The target (and only the target) hears the
-      message and can reply in a whisper that only you can hear.<br> You can cast
-      this spell through solid objects if you are familiar with the target and know
-      it is beyond the barrier. Magical silence, 1 foot of stone, 1 inch of common
-      metal, a thin sheet of lead, or 3 feet of wood blocks the spell. The spell doesn''t
-      have to follow a straight line and can travel freely around corners or through
-      openings. '
+    components: VSM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 1 round
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
     level: 0
     name: Message
+    page: phb 259
+    ritual: false
+    school: Transmutation
     spell_range: 120 feet
   model: spellbook.spell
   pk: 17
 - fields:
     cast_type: 1 action
-    description: 'You create a sound or an image of an object within range that lasts
-      for the duration. The illusion also ends if you dismiss it as an action or cast
-      this spell again.<br> If you create a sound, its volume can range from a whisper
-      to a scream. It can be your voice, someone else''s voice, a lion''s roar, a
-      beating of drums, or any other sound you choose. The sound continues unabated
-      throughout the duration, or you can make discrete sounds at different times
-      before the spell ends.<br> If you create an image of an object - such as a chair,
-      muddy footprints, or a small chest - it must be no larger than a 5-foot cube.
-      The image can''t create sound, light, smell, or any other sensory effect. Physical
-      interaction with the image reveals it to be an illusion, because things can
-      pass through it.<br> If a creature uses its action to examine the sound or image,
-      the creature can determine that it is an illusion with a successful Intelligence
-      (Investigation) check against your spell save DC. If a creature discerns the
-      illusion for what it is, the illusion becomes faint to the creature. '
-    level: 0
-    name: Minor Illusion
-    spell_range: 30 feet
+    components: VSM
+    concentration: false
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    duration: 24 hours
+    level: 2
+    name: Nystul's Magic Aura
+    page: phb 263
+    ritual: false
+    school: Illusion
+    spell_range: Touch
   model: spellbook.spell
   pk: 18
 - fields:
     cast_type: 1 action
-    description: "You choose a portion of dirt or stone that you can see within range\
-      \ and that fits within a 5-foot cube. You manipulate it in one of the following\
-      \ ways:<br> \u2022 If you target an area of loose earth, you can instantaneously\
-      \ excavate it, move it along the ground, and deposit it up to 5 feet away. This\
-      \ movement doesn't involve enough force to cause damage.<br> \u2022 You cause\
-      \ shapes, colors, or both to appear on the dirt or stone, spelling out words,\
-      \ creating images, or shaping patterns. The changes last for 1 hour.<br> \u2022\
-      \ If the dirt or stone you target is on the ground, you cause it to become difficult\
-      \ terrain. Alternatively, you can cause the ground to become normal terrain\
-      \ if it is already difficult terrain . This change lasts for 1 hour.<br> If\
-      \ you cast this spell multiple times, you can have no more than two of its non-instantaneous\
-      \ effects active at a time, and you can dismiss such an effect as an action."
-    level: 0
-    name: Mold Earth
-    spell_range: 30 feet
+    components: VSM
+    concentration: true
+    description: One creature or object of your choice that you can see within range
+      rises vertically, up to 20 feet, and remains suspended there for the duration.
+      The spell can levitate a target that weighs up to 500 pounds. An unwilling creature
+      that succeeds on a Constitution saving throw is unaffected.  The target can move
+      only by pushing or pulling against a fixed object or surface within reach (such
+      as a wall or a ceiling), which allows it to move as if it were climbing. You can
+      change the target's altitude by up to 20 feet in either direction on your turn.
+      If you are the target, you can move up or down as part of your move. Otherwise,
+      you can use your action to move the target, which must remain within the spell's
+      range.  When the spell ends, the target floats gently to the ground if it is still
+      aloft.
+    material_component: either a small leather loop or a piece of golden wire bent into
+      a cup shape with a long shank on one end
+    duration: up to 10 minutes
+    level: 1
+    name: Protection from Evil and Good
+    page: phb 270
+    ritual: false
+    school: Abjuration
+    spell_range: Touch
   model: spellbook.spell
   pk: 19
