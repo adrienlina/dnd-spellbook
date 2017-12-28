@@ -69,7 +69,7 @@ class Spell(models.Model):
     """Material components needed, if any"""
     material_component = models.TextField(
         blank=True,
-        default=""
+        default="",
     )
 
     @property

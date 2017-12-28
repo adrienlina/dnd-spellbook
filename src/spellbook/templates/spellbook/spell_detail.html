@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Spells{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="spell_list" %}
+{% endblock %}
+
+{% block container %}
+<div class="no-scroll-content">
+  <div class="container height-full">
+    <div class="row">
+      <h1>{{ object.name }} <a href="{% url 'spellbook:spellbook-list' %}" class="btn btn-info pull-right">Save it in a spellbook!</a></h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped spell-table">
+          <thead>
+            <tr>
+              <th>Spell Name</th>
+              <th>Level</th>
+              <th>Ritual /<br />Concentration</th>
+              <th>Cast type</th>
+              <th>Duration</th>
+              <th>Range</th>
+              <th>School</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>{{ object.name }}</strong></td>
+              <td>{{ object.level_as_dnd_format }}</td>
+              <td>{{ object.ritual }}</td>
+              <td>{{ object.cast_type }}</td>
+              <td>{{ object.duration }}</td>
+              <td>{{ object.spell_range }}</td>
+              <td>{{ object.school }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <table class="table table-striped spell-table">
+          <thead>
+            <tr></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><strong>Description</strong></th>
+              <td>{{ object.description }}</td>
+            </tr>
+          </tbody>
+          {% if object.material_component %}
+          <tr>
+            <th><strong>Material components required</strong></th>
+            <td>{{ object.material_component }}</td>
+          </tr>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock container %}
+
+{% block scripts %}
+  {% include 'spellbook/widgets/spell_list_with_search_scripts.html' %}
+{% endblock %}

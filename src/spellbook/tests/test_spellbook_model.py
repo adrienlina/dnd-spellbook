@@ -4,6 +4,8 @@ from django.test import TestCase
 from profiles.models import Profile
 from spellbook.models import Spell, Spellbook, SpellUsage
 
+from .test_spell_model import TEST_SPELL_EXAMPLE_FIELDS
+
 User = get_user_model()
 
 
@@ -50,10 +52,7 @@ class SpellbookModelCase(TestCase):
 
         spell = Spell(
             name="spell_name",
-            level=0,
-            cast_type="cast_type",
-            spell_range="spell_range",
-            description="description",
+            **TEST_SPELL_EXAMPLE_FIELDS,
         )
         spell.save()
 
